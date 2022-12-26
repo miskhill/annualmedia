@@ -7,9 +7,8 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: [true, "can't be blank"],
     unique: true,
-    match: [/^[a-zA-Z0-9]+$/, 'is invalid'],
     index: true,
-    maxlength: 20,
+    maxlength: 30,
   },  
   email: {
     type: String,
@@ -40,11 +39,11 @@ UserSchema.pre('save', function (next) {
   if (!this.isModified('password')) {
     return next();
   }
-  this.password = bcrypt.hashSync(this.password, bcrypt.getSaltSync(10));
+  this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync(10));
   next();
 });
 
-userSchema.methods.validatePassword = function (password) {
+UserSchema.methods.validatePassword = function (password) {
   return bcrypt.compareSync(password, this.password);
 };
 

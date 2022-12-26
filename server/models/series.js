@@ -35,7 +35,7 @@ const SeriesSchema = new mongoose.Schema({
     type: String,
     required: [true, "can't be blank"],
     index: true,
-    maxlength: 100,
+    maxlength: 200,
   },
   poster: {
     type: String,
