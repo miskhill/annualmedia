@@ -4,12 +4,14 @@ import Home from './components/home';
 import Movies from './components/movies';
 import SignIn from './components/signIn';
 import SignUp from './components/signUp';
+import NavBar from './components/navbar';
 import './App.css';
 
 
 function App() {
   return (
     <BrowserRouter>
+      <NavBar />
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/movies" element={<Movies />} />
