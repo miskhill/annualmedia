@@ -1,10 +1,57 @@
-export default {
-  title: "IT",
-  author: "Stephen King",
-  genre: "Horror",
-  publisher: "Viking Press",
-  year: 1986,
-  pages: 1138,
-};
+export default [ { title: "IT",
+author: "Stephen King",
+genre: "Horror",
+publisher: "Viking Press",
+year: 1986,
+pages: 1138,
+},
+  {
+    title: "Elevation",
+    author: "Stephen King",
+    genre: "Horror",
+    publisher: "Viking Press",
+    year: 2018,
+    pages: 256,
+  },
+  {
+    title: "Burnt Offerings",
+    author: "Robert Marasco",
+    genre: "Horror",
+    publisher: "Pocket Books",
+    year: 1977,
+    pages: 256,
+  },
+  {
+    title: "The Furies",
+    author: "John Connolly",
+    genre: "Horror",
+    publisher: "Hachette Books",
+    year: 2019,
+    pages: 384,
+  },
+  {
+    title: "If it Bleeds",
+    author
+      : "Stephen King",
+    genre: "Horror",
+    publisher: "Scribner",
+    year: 2020,
+    pages: 448,
+  },
+  {
+    title: "The Institute",
+    author: "Stephen King",
+    genre: "Horror",
+    publisher: "Scribner",
+    year: 2019,
+    pages: 576,
+  }, {
+    title: "When You Are Mine",
+    author: "Michael Rowbotham",
+    genre: "thriller",
+    publisher: "Hachette Books",
+    year: 2019,
+    pages: 384,
+  }];
 
 

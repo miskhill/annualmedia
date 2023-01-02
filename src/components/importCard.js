@@ -1,27 +1,27 @@
 import React, { useState } from 'react';
 import FormLabel from "@mui/material/FormLabel";
 import FormControl from "@mui/material/FormControl"
-import axios from 'axios'
+// import axios from 'axios'
 
 
-
-// create a reusable card to allow a user to import movie details
 const ImportCard = () => {
 
   // get a movie document from the database
-  const [movie, setMovie] = useState(null)
+  // const [movie, setMovie] = useState(null)
 
-  const getMovie = async () => {
-    try {
-      const { data } = await axios.get('/api/movies')
-      setMovie(data)
-      console.log(data)
-    } catch (error) {
-      console.log(error)
-    }
-  }
 
-  getMovie()
+  // const getMovie = async () => {
+  //   try {
+  //     const { data } = await axios.get(process.env.REACT_APP_DB_URI)
+  //     setMovie(data)
+  //     console.log(data)
+  //     console.log(movie, 'movie')
+  //   } catch (error) {
+  //     console.log(error, 'error')
+  //   }
+  // }
+
+  // getMovie()
   
 return (
 

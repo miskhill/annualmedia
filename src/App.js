@@ -9,9 +9,19 @@ import './App.css';
 
 
 function App() {
+
+  const [data, setData] = React.useState(null);
+
+  React.useEffect(() => {
+    fetch("/api")
+      .then((res) => res.json())
+      .then((data) => setData(data.message));
+  }, []);
+
   return (
     <BrowserRouter>
       <NavBar />
+      <h1>{!data ? "Loading..." : data}</h1>
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/movies" element={<Movies />} />
