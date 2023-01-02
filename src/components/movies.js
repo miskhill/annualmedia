@@ -1,5 +1,5 @@
 import React from "react";
-import ImportCard from "./importCard";
+import ImportCard from "./importCard.js";
 
 const Movies = () => {
   return (

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
-import { userIsAuthenticated } from './utils/helper'
+import { userIsAuthenticated } from './utils/helper.js'
 import axios from 'axios'
-import { getTokenFromLocalStorage } from './utils/helper'
+import { getTokenFromLocalStorage } from './utils/helper.js'
 
 const NavBar = () => {
 

@@ -1,10 +1,10 @@
 import React from 'react'; 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Home from './components/home';
-import Movies from './components/movies';
-import SignIn from './components/signIn';
-import SignUp from './components/signUp';
-import NavBar from './components/navbar';
+import Home from './components/home.js';
+import Movies from './components/movies.js';
+// import SignIn from './components/signIn.js';
+// import SignUp from './components/signUp.js';
+import NavBar from './components/navbar.js';
 import './App.css';
 
 
@@ -25,8 +25,8 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/movies" element={<Movies />} />
-        <Route exact path="/signIn" element={<SignIn />} />
-        <Route exact path="/signUp" element={<SignUp />} />
+        {/* <Route exact path="/signIn" element={<SignIn />} />
+        <Route exact path="/signUp" element={<SignUp />} /> */}
       </Routes>
     </BrowserRouter>
   );
