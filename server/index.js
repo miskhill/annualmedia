@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
+import router from '../config/router.js';
 dotenv.config();
 
 const app = express();
@@ -15,11 +16,12 @@ const startServer = async () => {
     console.log('MongoDB connected ⭐️')
 
     app.use(bodyParser.json());
+    app.use('/api', router);
 
-    app.get("/api", (req, res) => {
-      res.json({ message: "Hello from server!" });
-      console.log("Hello from server!")
-    });
+    // app.get("/api", (req, res) => {
+    //   res.json({ message: "Hello from server!" });
+    //   console.log("Hello from server!")
+    // });
 
     app.use((_req, res) => {
       return res.status(404).json({ message: 'Path not found' })

@@ -1,4 +1,4 @@
-import series from '../models/series';
+import series from '../models/series.js';
 
 export const getAllSeries = async (req, res) => {
   try {

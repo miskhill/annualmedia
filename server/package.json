@@ -2,13 +2,15 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "npx nodemon index.js",
     "seed": "node database/seeds.js"
+    
   },
-  "author": "",
+  "author": "GS",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",
@@ -18,6 +20,5 @@
     "mongoose": "^6.8.1",
     "nodemon": "^2.0.20"
   },
-  "type": "module",
   "proxy": "http://localhost:4000"
 }

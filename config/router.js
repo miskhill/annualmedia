@@ -1,8 +1,8 @@
 import express from 'express';
-import { getAllMovies, createMovie, getMovieById } from '../server/controllers/moviesController';
-import { getAllBooks, createBook, getBookById } from '../server/controllers/booksController';
-import { getAllSeries, getSeriesById, createSeries } from '../server/controllers/seriesController';
-import { secureRoute } from './secureRoute';
+import { getAllMovies, createMovie, getMovieById } from '../server/controllers/moviesController.js';
+import { getAllBooks, createBook, getBookById } from '../server/controllers/booksController.js';
+import { getAllSeries, getSeriesById, createSeries } from '../server/controllers/seriesController.js';
+import { secureRoute } from './secureRoute.js';
 
 const router = express.Router();
 

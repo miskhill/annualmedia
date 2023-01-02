@@ -31,8 +31,7 @@ pages: 1138,
   },
   {
     title: "If it Bleeds",
-    author
-      : "Stephen King",
+    author: "Stephen King",
     genre: "Horror",
     publisher: "Scribner",
     year: 2020,

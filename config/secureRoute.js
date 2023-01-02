@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import user from '../models/user.js';
+// import user from '../models/user.js';
 
 export const secureRoute = async (req, res, next) => {
 
