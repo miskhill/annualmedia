@@ -21,6 +21,10 @@ const startServer = async () => {
       console.log("Hello from server!")
     });
 
+    app.use((_req, res) => {
+      return res.status(404).json({ message: 'Path not found' })
+    })
+
     app.listen(port, () => {
       console.log(`Server is running on port ${port}`);
     });
