@@ -15,13 +15,13 @@ const startServer = async () => {
     await mongoose.connect(process.env.REACT_APP_DB_URI)
     console.log('MongoDB connected ⭐️')
 
-    app.use(bodyParser.json());
+    app.use(express.json());
     app.use('/api', router);
 
-    app.get("/api", (req, res) => {
-      res.json({ message: "Hello from server!" });
-      console.log("Hello from server!")
-    });
+    // app.get("/api", (req, res) => {
+    //   res.json({ message: "Hello from server!" });
+    //   console.log("Hello from server!")
+    // });
 
     app.get('*', (req, res) => {
       res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
