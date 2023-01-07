@@ -2,8 +2,8 @@ import movies from '../models/movie.js';
 
 export const getAllMovies = async (req, res) => {
   try {
-    const movies = await movies.find();
-    res.status(200).json(movies);
+    const findMovies = await movies.find();
+    res.status(200).json(findMovies);
   }
   catch (err) {
     res.status(404).json({ message: err.message });

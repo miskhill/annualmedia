@@ -1,6 +1,7 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Learns - before I forget
+CRA uses React script v5 and MUI was not supporting this causing not found
+Differences in React Router - uses Element rather than Component
+In my controller I had named my fetch variable the same as the collection which needed re-naming! const movies to fetch movies. Wasn't too smart.
 
 ## Available Scripts
 
