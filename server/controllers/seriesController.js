@@ -2,8 +2,8 @@ import series from '../models/series.js';
 
 export const getAllSeries = async (req, res) => {
   try {
-    const series = await series.find();
-    res.status(200).json(series);
+    const findSeries = await series.find();
+    res.status(200).json(findSeries);
   }
   catch (err) {
     res.status(404).json({ message: err.message });
@@ -13,10 +13,10 @@ export const getAllSeries = async (req, res) => {
 export const getSeriesById = async (req, res) => {
   try {
     const { id } = req.params;
-    const series = await
+    const indiSeries = await
       series.findById
         (id);
-    res.status(200).json(series);
+    res.status(200).json(indiSeries);
   }
   catch (err) {
     res.status(404).json({ message: err.message });
