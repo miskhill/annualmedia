@@ -8,7 +8,6 @@ const Movies = () => {
       <h1>Movies Page</h1>
         <ImportCard />
       </div>
-   
   );
 };
 
