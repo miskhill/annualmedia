@@ -42,6 +42,7 @@ const NavBar = () => {
         <Link to="/" id="navLink">Home</Link>
         <Link to="/movies" id="navLink">Movie</Link>
         <Link to="/books" id="navLink">Books</Link>
+        <Link to="/series" id="navLink">Series</Link>
         {
           user.username === 'admin' ? 
             <Link to="/AdminUpload" id="navLink">Admin Upload</Link>
