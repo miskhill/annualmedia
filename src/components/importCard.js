@@ -34,33 +34,33 @@ const ImportCard = () => {
     <form onSubmit={handleSubmit(onSubmit)} style={mystyle}>
       {/* register your input into the hook by invoking the "register" function */}
       {/* include validation with required or other standard HTML validation rules */}
-      <input defaultValue='title' {...register("titleRequired", { required: true })} />
+      <input defaultValue='title' {...register("title", { required: true })} />
       {/* errors will return when field validation fails  */}
-      {errors.titleRequired && <span>The title is required</span>}
+      {errors.title && <span>The title is required</span>}
 
-      <input defaultValue='year'{...register("yearRequired", { required: true })} />
-      {errors.yearRequired && <span>The year is required</span>}
+      <input defaultValue='year'{...register("year", { required: true })} />
+      {errors.year && <span>The year is required</span>}
 
-      <input defaultValue='genre'{...register("genreRequired", { required: true })} />
-      {errors.genreRequired && <span>The genre is required</span>}
+      <input defaultValue='genre'{...register("genre", { required: true })} />
+      {errors.genre && <span>The genre is required</span>}
 
-      <input defaultValue='director'{...register("directorRequired", { required: true })} />
-      {errors.directorRequired && <span>The director is required</span>}
+      <input defaultValue='director'{...register("director", { required: true })} />
+      {errors.director && <span>The director is required</span>}
 
-      <input defaultValue='poster'{...register("posterRequired", { required: true })} />
-      {errors.posterRequired && <span>The poster is required</span>}
+      <input defaultValue='poster'{...register("poster", { required: true })} />
+      {errors.poster && <span>The poster is required</span>}
 
-      <input defaultValue="actors"{...register("actorsRequired", { required: true })} />
-      {errors.actorsRequired && <span>The actors are required</span>}
+      <input defaultValue="actors"{...register("actors", { required: true })} />
+      {errors.actors && <span>The actors are required</span>}
 
-      <input defaultValue="plot"{...register("plotRequired", { required: true })} />
-      {errors.plotRequired && <span>The plot is required</span>}
+      <input defaultValue="plot"{...register("plot", { required: true })} />
+      {errors.plot && <span>The plot is required</span>}
 
-      <input defaultValue="imdbID" {...register("imdbIDRequired", { required: true })} />
-      {errors.imdbIDRequired && <span>The imdbID is required</span>}
+      <input defaultValue="imdbID" {...register("imdbID", { required: true })} />
+      {errors.imdbID && <span>The imdbID is required</span>}
 
-      <input defaultValue="website"{...register("websiteRequired", { required: true })} />
-      {errors.websiteRequired && <span>The website is required</span>}
+      <input defaultValue="website"{...register("website", { required: true })} />
+      {errors.website && <span>The website is required</span>}
 
       <input type='submit' />
     </form>
