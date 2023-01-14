@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.get('/movies', getAllMovies);
 router.get('/movies/:id', getMovieById);
-router.post('/movies', secureRoute, createMovie);
+router.post('/movies', createMovie);
 
 router.get('/books', getAllBooks);
 router.get('/books/:id', getBookById);

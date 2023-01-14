@@ -26,11 +26,13 @@ export const getMovieById = async (req, res) => {
 export const createMovie = async (req, res) => {
   const { body } = req;
   const newMovie = new movies(body);
+  console.log(newMovie, 'newMovie')
   try {
     await newMovie.save();
     res.status(201).json(newMovie);
   }
   catch (err) {
     res.status(409).json({ message: err.message });
+    console.log('here?')
   }
 }
