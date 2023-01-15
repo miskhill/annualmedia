@@ -1,10 +1,12 @@
-export default [ { title: "IT",
-author: "Stephen King",
-genre: "Horror",
-publisher: "Viking Press",
-year: 1986,
-pages: 1138,
-},
+export default [
+  {
+    title: "IT",
+    author: "Stephen King",
+    genre: "Horror",
+    publisher: "Viking Press",
+    year: 1986,
+    pages: 1138,
+  },
   {
     title: "Elevation",
     author: "Stephen King",
@@ -44,13 +46,13 @@ pages: 1138,
     publisher: "Scribner",
     year: 2019,
     pages: 576,
-  }, {
+  },
+  {
     title: "When You Are Mine",
     author: "Michael Rowbotham",
     genre: "thriller",
     publisher: "Hachette Books",
     year: 2019,
     pages: 384,
-  }];
-
-
+  },
+];
