@@ -4,6 +4,9 @@ import { getAllBooks, createBook, getBookById } from '../server/controllers/book
 import { getAllSeries, getSeriesById, createSeries } from '../server/controllers/seriesController.js';
 // import { secureRoute } from './secureRoute.js';
 
+//TO DO - add secureRoute to all create routes
+//TO DO - add secureRoute to all delete routes and create those routes
+
 const router = express.Router();
 
 router.get('/movies', getAllMovies);
