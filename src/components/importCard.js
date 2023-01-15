@@ -1,8 +1,6 @@
 import React from "react";
-// import { useForm } from "react-hook-form";
-// import axios from "axios";
-import SeriesUploadCard from "./seriesUploadCard";
-import MovieUploadCard from "./movieUploadCard";
+import MovieUploadCard from "./upload/movieUploadCard";
+import SeriesUploadCard from "./upload/seriesUploadCard";
 
 const ImportCard = () => {
   // const mystyle = {
@@ -36,7 +34,6 @@ const ImportCard = () => {
   return (
     <>
       <MovieUploadCard />
-
       <SeriesUploadCard />
     </>
   );

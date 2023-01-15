@@ -34,7 +34,7 @@ const MovieUploadCard = () => {
   return (
     <>
       <h1>Movie Upload</h1>
-      <form onSubmit={handleSubmit(onSubmitMovie)} style={mystyle}>
+      <form onSubmit={handleSubmit(onSubmit)} style={mystyle}>
         {/* register your input into the hook by invoking the "register" function */}
         {/* include validation with required or other standard HTML validation rules */}
         <input
