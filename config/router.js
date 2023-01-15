@@ -16,6 +16,6 @@ router.post('/books', secureRoute, createBook);
 
 router.get('/series', getAllSeries);
 router.get('/series/:id', getSeriesById);
-router.post('/series', secureRoute, createSeries);
+router.post('/series', createSeries);
 
 export default router;
