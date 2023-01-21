@@ -59,6 +59,9 @@ const BookUploadCard = () => {
         <input defaultValue='pages' {...register('pages')} />
         {errors.pages && <span>The amount of pages is required</span>}
 
+        <input defaultValue='poster' {...register('poster')} />
+        {errors.poster && <span>The poster is required</span>}
+
         <input type='submit' />
       </form>
     </>

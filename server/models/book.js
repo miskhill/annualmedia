@@ -35,6 +35,11 @@ const BookSchema = new mongoose.Schema({
     required: [true, "can't be blank"],
     index: true,
   },
+  poster: {
+    type: String,
+    index: true,
+    maxlength: 100,
+  },
 }, { timestamps: true });
 
 export default mongoose.model('Book', BookSchema);

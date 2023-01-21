@@ -24,7 +24,7 @@ const Books = () => {
       <h1>Books</h1>
       {books.map((book) => {  
         return (
-          <MediaCard key={book.id} title={book.title} year={book.year} genre={book.genre} />
+          <MediaCard key={book.id} title={book.title} year={book.year} genre={book.genre} image={book.poster} />
         )})}
 
     </div>
