@@ -5,7 +5,7 @@ In my controller I had named my fetch variable the same as the collection which 
 
 Used ClickUp for project management
 
-public/Screenshot 2023-01-21 at 11.23.12.png
+[ClickUp](public/Screenshot%202023-01-21%20at%2011.23.12.png)
 ## Available Scripts
 
 In the project directory, you can run:
