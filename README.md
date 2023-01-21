@@ -3,6 +3,9 @@ CRA uses React script v5 and MUI was not supporting this causing not found
 Differences in React Router - uses Element rather than Component
 In my controller I had named my fetch variable the same as the collection which needed re-naming! const movies to fetch movies. Wasn't too smart.
 
+Used ClickUp for project management
+
+public/Screenshot 2023-01-21 at 11.23.12.png
 ## Available Scripts
 
 In the project directory, you can run:
