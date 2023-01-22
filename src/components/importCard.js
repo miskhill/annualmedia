@@ -1,39 +1,49 @@
 import React, { useState } from "react";
-import BookUploadCard from './upload/bookUploadCard';
+import BookUploadCard from "./upload/bookUploadCard";
 import MovieUploadCard from "./upload/movieUploadCard";
 import SeriesUploadCard from "./upload/seriesUploadCard";
+import TabNavItem from './tabNavItem';
+import TabContent from './tabContent';
 
 const ImportCard = () => {
-
-  // const [selected, setSelected] = useState(false);
-
-  // const handleSelect = (e) => {
-  //   setSelected(e.target.value);
-  // };
-
-  // function to choose movie, series or book
-  // const chooseUpload = () => {
-  //   if (selected === "movie") {
-  //     setSelected(true)
-  //     return <MovieUploadCard />;
-  //   } else if (selected === "series") {
-  //     setSelected(true)
-  //     return <SeriesUploadCard />;
-  //   } else if (selected === "book") {
-  //     setSelected(true)
-  //     return <BookUploadCard />;
-  //   }
-  // };
-
- // allow a user to choose between movie, series or book upload
-  
-  
+  const [activeTab, setActiveTab] = useState("movie");
 
   return (
     <>
-      <MovieUploadCard  />
-      <SeriesUploadCard />
-      <BookUploadCard />
+      <div className='Tabs'>
+        <ul className='nav'>
+          <TabNavItem
+            title='Movie'
+            id='movie'
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+          />
+          <TabNavItem
+            title='Series'
+            id='series'
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+          />
+          <TabNavItem
+            title='Book'
+            id='book'
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+          />
+        </ul>
+
+        <div className='outlet'>
+          <TabContent id='movie' activeTab={activeTab}>
+            <MovieUploadCard />
+          </TabContent>
+          <TabContent id='series' activeTab={activeTab}>
+            <SeriesUploadCard />
+          </TabContent>
+          <TabContent id='book' activeTab={activeTab}>
+            <BookUploadCard />
+          </TabContent>
+        </div>
+      </div>
     </>
   );
 };
