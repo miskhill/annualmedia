@@ -23,7 +23,6 @@ const Movies = () => {
 
   return (
     <div>
-      <h1>Movies</h1>
       {movies.map((movie) => {  
         return (
           <MediaCard key={movie.id} title={movie.title} year={movie.year} genre={movie.genre} image={movie.poster} />

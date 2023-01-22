@@ -21,7 +21,6 @@ const Series = () => {
 
   return (
     <div>
-      <h1>Series</h1>
       {series.map((series) => {  
         return (
           <MediaCard key={series.id} title={series.title} year={series.year} genre={series.genre} image={series.poster } />
