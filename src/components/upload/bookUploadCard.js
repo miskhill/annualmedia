@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 const BookUploadCard = () => {
   const mystyle = {
     color: 'white',
-    backgroundColor: 'DodgerBlue',
+    backgroundColor: "#39a2db",
     padding: '10px',
     fontFamily: 'Arial',
     display: 'flex',
@@ -35,31 +35,31 @@ const BookUploadCard = () => {
     <>
       <h1>Book Upload</h1>
       <form onSubmit={handleSubmit(onSubmit)} style={mystyle}>
-        <input defaultValue='title' {...register('title', { required: true })} />
+        <input placeholder='title' {...register('title', { required: true })} />
         {errors.title && <span>The title is required</span>}
 
-        <input defaultValue='year' {...register('year', { required: true })} />
+        <input placeholder='year' {...register('year', { required: true })} />
         {errors.year && <span>The year is required</span>}
 
         <input
-          defaultValue='author'
+          placeholder='author'
           {...register('author', { required: true })}
         />
         {errors.author && <span>The author is required</span>}
 
         <input
-          defaultValue='genre'
+          placeholder='genre'
           {...register('genre', { required: true })}
         />
         {errors.genre && <span>The genre is required</span>}
 
-        <input defaultValue='publisher' {...register('publisher')} />
+        <input placeholder='publisher' {...register('publisher')} />
         {errors.publisher && <span>The publisher is required</span>}
 
-        <input defaultValue='pages' {...register('pages')} />
+        <input placeholder='pages' {...register('pages')} />
         {errors.pages && <span>The amount of pages is required</span>}
 
-        <input defaultValue='poster' {...register('poster')} />
+        <input placeholder='poster' {...register('poster')} />
         {errors.poster && <span>The poster is required</span>}
 
         <input type='submit' />

@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 const MovieUploadCard = () => {
   const mystyle = {
     color: "white",
-    backgroundColor: "DodgerBlue",
+    backgroundColor: "#39a2db",
     padding: "10px",
     fontFamily: "Arial",
     display: "flex",

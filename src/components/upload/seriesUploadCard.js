@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 const SeriesUploadCard = () => {
   const mystyle = {
     color: "white",
-    backgroundColor: "DodgerBlue",
+    backgroundColor: "#39a2db",
     padding: "10px",
     fontFamily: "Arial",
     display: "flex",
@@ -35,44 +35,38 @@ const SeriesUploadCard = () => {
     <>
       <h1>Series Upload</h1>
       <form onSubmit={handleSubmit(onSubmit)} style={mystyle}>
-        <input
-          defaultValue='title'
-          {...register("title", { required: true })}
-        />
+        <input placeholder='title' {...register("title", { required: true })} />
         {errors.title && <span>The title is required</span>}
 
-        <input defaultValue='year' {...register("year", { required: true })} />
+        <input placeholder='year' {...register("year", { required: true })} />
         {errors.year && <span>The year is required</span>}
 
         <input
-          defaultValue='director'
+          placeholder='director'
           {...register("director", { required: true })}
         />
         {errors.director && <span>The director is required</span>}
 
-        <input
-          defaultValue='genre'
-          {...register("genre", { required: true })}
-        />
+        <input placeholder='genre' {...register("genre", { required: true })} />
         {errors.genre && <span>The genre is required</span>}
 
         <input
-          defaultValue='actors'
+          placeholder='actors'
           {...register("actors", { required: true })}
         />
         {errors.actors && <span>The actors are required</span>}
 
         <input
-          defaultValue='poster'
+          placeholder='poster'
           {...register("poster", { required: true })}
         />
         {errors.poster && <span>The poster is required</span>}
 
-        <input defaultValue='plot' {...register("plot", { required: true })} />
+        <input placeholder='plot' {...register("plot", { required: true })} />
         {errors.plot && <span>The plot is required</span>}
 
         <input
-          defaultValue='website'
+          placeholder='website'
           {...register("website", { required: true })}
         />
         {errors.website && <span>The website is required</span>}
