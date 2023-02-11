@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 const SeriesUploadCard = () => {
   const mystyle = {
@@ -14,6 +15,11 @@ const SeriesUploadCard = () => {
     flexDirection: "column",
   };
 
+  // const [resStatus, setResStatus] = useState("");
+  // console.log(resStatus, "resStatus");
+
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -25,11 +31,29 @@ const SeriesUploadCard = () => {
       .post("/api/series", series)
       .then((res) => {
         console.log(res.data);
+        // setResStatus('Success!⭐️');
+        // go back to the home page when successful post request
+        // window.location.href = "/";
+        if (res.status === 201) {
+          console.log('do i get here')
+          navigate("/series");
+        }
       })
+      // if we send data to the server and it's successful, we want to reset the form using the react hook form reset functio
       .catch((err) => {
         console.log(err);
+        // setResStatus('Error!🛑');
       });
   };
+
+  // const resetAsyncForm = useCallback(async () => {
+  //   const result = await fetch('./api/formValues.json'); // result: { firstName: 'test', lastName: 'test2' }
+  //   reset(result); // asynchronously reset your form values
+  // }, [reset]);
+
+  // useEffect(() => {
+  //   navigate("/");
+  // }, [navigate])
 
   return (
     <>
@@ -73,6 +97,7 @@ const SeriesUploadCard = () => {
 
         <input type='submit' />
       </form>
+      {/* {resStatus? <h1>{resStatus}</h1> : null} */}
     </>
   );
 };

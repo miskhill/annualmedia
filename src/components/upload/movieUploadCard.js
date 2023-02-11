@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 const MovieUploadCard = () => {
   const mystyle = {
@@ -14,6 +15,8 @@ const MovieUploadCard = () => {
     flexDirection: "column",
   };
 
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -25,6 +28,9 @@ const MovieUploadCard = () => {
       .post("/api/movies", movie)
       .then((res) => {
         console.log(res.data);
+        if (res.status === 201) {
+          navigate("/movies");
+        }
       })
       .catch((err) => {
         console.log(err);
