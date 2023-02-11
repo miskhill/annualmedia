@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const SeriesUploadCard = () => {
   const mystyle = {
@@ -18,7 +18,7 @@ const SeriesUploadCard = () => {
   // const [resStatus, setResStatus] = useState("");
   // console.log(resStatus, "resStatus");
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -34,7 +34,10 @@ const SeriesUploadCard = () => {
         // setResStatus('Success!⭐️');
         // go back to the home page when successful post request
         // window.location.href = "/";
-        // navigate("/");
+        if (res.status === 201) {
+          console.log('do i get here')
+          navigate("/series");
+        }
       })
       // if we send data to the server and it's successful, we want to reset the form using the react hook form reset functio
       .catch((err) => {

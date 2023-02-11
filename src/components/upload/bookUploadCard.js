@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 const BookUploadCard = () => {
   const mystyle = {
@@ -14,6 +15,8 @@ const BookUploadCard = () => {
     flexDirection: 'column',
   };
 
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -25,6 +28,9 @@ const BookUploadCard = () => {
       .post('/api/books', book)
       .then((res) => {
         console.log(res.data);
+        if (res.status === 201) {
+          navigate("/books");
+        }
       })
       .catch((err) => {
         console.log(err);
