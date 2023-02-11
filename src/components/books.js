@@ -11,7 +11,6 @@ const Books = () => {
     try {
       axios.get("/api/books").then((res) => {
         setBooks(res.data);
-        console.log(res.data, 'giles');
       });
     }
     catch (err) {
