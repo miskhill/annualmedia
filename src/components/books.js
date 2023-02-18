@@ -1,50 +1,69 @@
 import { useState, useEffect } from "react";
 import MediaCard from "./card.js";
-import Filters from './utils/filters.js';
+import Filters from "./utils/filters.js";
 import axios from "axios";
 
 const Books = () => {
   const [books, setBooks] = useState([]);
+  const [ searchBooks, setSearchBooks ] = useState([])
+  const [ filters, setFilters ] = useState({ searchTerm: '' })
+  const [ sortBy, setSortBy ] = useState('createdAt')
+  const [ sortedArray, setSortedArray ] = useState([])
   console.log(books, "books");
 
   useEffect(() => {
-    try {
-      axios.get("/api/books").then((res) => {
-        setBooks(res.data);
-      });
-    } catch (err) {
-      console.log(err, "catch error");
-    }
+    const getBooks = async () => {
+      try {
+        const { data } = await axios.get("/api/books");
+        console.log(data, "data");
+        setBooks(Object.values({ ...data }));
+      } catch (err) {
+        console.log(err, "catch error");
+      }
+    };
+    getBooks();
   }, []);
 
-  // function to search for title, genre, year, createdAt, author but must not try to access book before init
-  // const search = (e) => {
-  //   e.preventDefault();
-  //   const search = e.target.value;
-  //   console.log(search, "search");
-  //   axios.get(`/api/books?search=${search}`).then((res) => {
-  //     setBooks(res.data);
-  //   });
-  // };
+  const handleFilterChange = (event) => {
+    const newObj = { ...filters, [event.target.name]: event.target.value };
+    console.log(newObj);
+    setFilters(newObj);
+  };
+  const handleSortBy = (event) => {
+    setSortBy(event.target.value);
+  };
 
-  // When we have setBooks, we can use it to filter the books
-  // const filter = (e) => {
-  //   e.preventDefault();
-  //   const filter = e.target.value;
-  //   console.log(filter, "filter");
-  //   axios.get(`/api/books?filter=${filter}`).then((res) => {
-  //     setBooks(res.data);
-  //   });
-  // };
+  const whichSort = (array, sortBy) => {
+    if (sortBy === 'Genre' || sortBy === 'Title' || sortBy === 'CreatedAt' || sortBy === 'Year') {
+      return array.sort((a,b)=> (a[sortBy] < b[sortBy] ? 1 : -1))
+    } else {
+      return array.sort((a,b)=> (a[sortBy] > b[sortBy] ? 1 : -1))
+    }
+  }
 
+  useEffect(() => {
+    setSortedArray(whichSort(books, sortBy))
+  }, [sortBy, books])
+
+  useEffect(() => {
+    const regexSearch = new RegExp(filters.searchTerm, 'i')
+    setSearchBooks((sortedArray ? sortedArray : whichSort(books, sortBy)).filter(book => {
+      return regexSearch.test(book.title)
+    }))
+  }, [filters, sortBy, sortedArray, books])
 
   return (
     <>
       <div>
-     <Filters />
+      <Filters id="matchesFilters" handleFilterChange={handleFilterChange} handleSortBy={handleSortBy} {...filters}/>
+      </div>
+      <div className="matchesGrid">
+        { (filters.searchTerm !== '' ? searchBooks : sortedArray ).map(book => { 
+          return <MediaCard key={book.id} image={book.poster} { ...book } />
+        })}
       </div>
 
-      <div>
+      {/* <div>
         {books.map((book) => {
           return (
             <MediaCard
@@ -56,7 +75,7 @@ const Books = () => {
             />
           );
         })}
-      </div>
+      </div> */}
     </>
   );
 };
