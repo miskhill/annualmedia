@@ -54,9 +54,9 @@ const Books = () => {
 
   return (
     <>
-      <div>
+      
       <Filters id="matchesFilters" handleFilterChange={handleFilterChange} handleSortBy={handleSortBy} {...filters}/>
-      </div>
+      
       <div className="matchesGrid">
         { (filters.searchTerm !== '' ? searchBooks : sortedArray ).map(book => { 
           return <MediaCard key={book.id} image={book.poster} { ...book } />
