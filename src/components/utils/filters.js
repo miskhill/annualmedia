@@ -29,7 +29,7 @@ const Filters = ({ handleFilterChange, handleSortBy, sortBy, searchTerm }) => {
         />
         <select style={{
           border: '0',
-          position: 'absolute',
+          // position: 'absolute',
           height: '26px',
           fontWeight: '800',
           fontSize: '12px',
