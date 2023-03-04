@@ -34,7 +34,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "serve": "npx nodemon index.js",
-    "seed": "node server/database/seeds.js"
+    "seed": "node server/database/seeds.js",
+    "deploy": "gh-pages -b main -d build"
   },
   "eslintConfig": {
     "extends": [
