@@ -1,7 +1,6 @@
 {
   "name": "annualmedia",
   "version": "0.1.0",
-  "homepage": "https://miskhill.github.io/annualmedia",
   "private": true,
   "type": "module",
   "dependencies": {
