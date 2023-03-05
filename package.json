@@ -1,6 +1,7 @@
 {
   "name": "annualmedia",
   "version": "0.1.0",
+  "homepage": "https://23f0811b.annualmedia.pages.dev",
   "private": true,
   "type": "module",
   "dependencies": {
