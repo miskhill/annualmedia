@@ -1,5 +1,5 @@
 import { useState } from "react"
-import "../styles/navbar.css"
+import "../navbar.css"
 
 export default function Navbar() {
   const [isNavExpanded, setIsNavExpanded] = useState(false)

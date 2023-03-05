@@ -1,11 +1,11 @@
-/* Remove browser defaults */
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
 
-/* Style App.js wrapper */
+
 .App {
   width: 100vw;
   height: 100vh;
@@ -15,7 +15,7 @@
   overflow: hidden;
 }
 
-/* Tab Container */
+
 .Tabs {
   width: 80%;
   height: auto;
@@ -30,7 +30,6 @@
   }
 }
 
-/* Tab Navigation */
 ul.nav {
   width: 60%;
   margin: 0 auto 2rem;
@@ -72,7 +71,6 @@ ul.nav li.active {
   background: #39a2db;
 }
 
-/* Tab Content Styles */
 .TabContent {
   font-size: 2rem;
   text-align: center;
