@@ -19,6 +19,7 @@ const startServer = async () => {
     app.use("/api", router);
 
     app.get("*", (req, res) => {
+      console.log(path, 'path');
       res.sendFile(path.join(__dirname, "client", "build", "index.html"));
     });
 
@@ -28,7 +29,8 @@ const startServer = async () => {
     });
 
     app.use((_req, res) => {
-      return res.status(404).json({ message: "Path not found" });
+      // return res.status(404).json({ message: "Path not found" });
+      return res.status(404).render('404', { pageTitle: 'Page Not Found', path: 'Error'});
     });
 
     app.listen(port, () => {
