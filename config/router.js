@@ -1,4 +1,4 @@
-// import express from 'express';
+import express from 'express/index.js';
 import { getAllMovies, createMovie, getMovieById } from '../server/controllers/moviesController.js';
 import { getAllBooks, createBook, getBookById } from '../server/controllers/booksController.js';
 import { getAllSeries, getSeriesById, createSeries } from '../server/controllers/seriesController.js';
