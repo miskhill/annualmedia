@@ -11,7 +11,6 @@ const Series = () => {
     try {
       axios.get("/api/series").then((res) => {
         setSeries(res.data);
-        console.log(res.data, 'giles');
       });
     }
     catch (err) {

@@ -8,7 +8,8 @@ dotenv.config();
 
 const app = express();
 
-const port = 4000;
+const port = process.env.REACT_APP_PORT;
+console.log(port)
 
 const startServer = async () => {
   try {
