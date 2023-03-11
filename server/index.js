@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
 import router from "./config/router.js";
+import path from "path";
 
 dotenv.config();
 
