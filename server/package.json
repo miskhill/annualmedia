@@ -8,7 +8,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "npx nodemon index.js",
     "seed": "node database/seeds.js"
-    
   },
   "author": "GS",
   "license": "ISC",
