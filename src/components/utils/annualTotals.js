@@ -13,9 +13,10 @@ const AnnualTotals = ({ arr, year }) => {
     return total;
   }
   
+  
   return (
     <div>
-      <h3 className='totals'>You have read {annualTotals(arr, year)} books</h3>
+      <h3 className='totals'>You have read {annualTotals(arr, year)} books this year</h3>
     </div>
   );
 }
