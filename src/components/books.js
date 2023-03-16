@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import MediaCard from "./card.js";
 import Filters from "./utils/filters.js";
 import axios from "axios";
+import AnnualTotals from './utils/annualTotals.js';
 
 const Books = () => {
   const [books, setBooks] = useState([]);
@@ -56,7 +57,7 @@ const Books = () => {
     <>
       
       <Filters id="matchesFilters" handleFilterChange={handleFilterChange} handleSortBy={handleSortBy} {...filters}/>
-      
+      <AnnualTotals arr={books} year={2023} />
       <div className="matchesGrid">
         { (filters.searchTerm !== '' ? searchBooks : sortedArray ).map(book => { 
           return <MediaCard key={book.id} image={book.poster} { ...book } />
