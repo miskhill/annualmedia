@@ -1,7 +1,4 @@
 import React from "react";
-// link the css file to the component
-
-
 
 const AnnualTotals = ({ arr, year }) => {
 
@@ -15,7 +12,7 @@ const AnnualTotals = ({ arr, year }) => {
     });
     return total;
   }
-
+  
   return (
     <div>
       <h3 className='totals'>You have read {annualTotals(arr, year)} books</h3>

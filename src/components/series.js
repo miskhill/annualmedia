@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import MediaCard from './card.js';
 import axios from 'axios';
+import AnnualTotals from './utils/annualTotals.js';
 
 const Series = () => {
 
@@ -19,6 +20,8 @@ const Series = () => {
   }, []);
 
   return (
+    <>
+      <AnnualTotals arr={series} year={2023} />
     <div>
       {series.map((series) => {  
         return (
@@ -26,6 +29,7 @@ const Series = () => {
         )})}
 
     </div>
+    </>
   );
 }
 

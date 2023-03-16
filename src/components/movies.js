@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import MediaCard from "./card.js";
 import axios from "axios";
+import AnnualTotals from './utils/annualTotals.js';
 
 
 const Movies = () => {
@@ -22,13 +23,16 @@ const Movies = () => {
   }, []);
 
   return (
+    <>
+    <AnnualTotals arr={movies} year={2023} />
     <div>
       {movies.map((movie) => {  
         return (
           <MediaCard key={movie.id} title={movie.title} year={movie.year} genre={movie.genre} image={movie.poster} />
         )})}
 
-    </div>
+      </div>
+      </>
   );
 }
 
