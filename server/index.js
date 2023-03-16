@@ -13,7 +13,7 @@ const app = express();
 // const __dirname = dirname(__filename)
 const port = process.env.REACT_APP_PORT;
 // const host = process.env.REACT_APP_HOST;
-console.log(port);
+console.log(port, 'using this port');
 
 const startServer = async () => {
   try {
@@ -23,7 +23,7 @@ const startServer = async () => {
     app.use(express.json());
     app.use("/api", router);
 
-    app.get("*", (req, res) => {
+    app.get("*", (_req, res) => {
       console.log(path, 'path');
       res.sendFile(path.join(__dirname, "client", "build", "index.html"));
     });
@@ -31,6 +31,12 @@ const startServer = async () => {
     app.use((req, _res, next) => {
       console.log(`Request received: ${req.method} - ${req.url}`);
       next();
+    });
+
+    // internal server errors handled
+    app.use((err, _req, res, _next) => {
+      console.log(err);
+      return res.status(500).send({ message: err.message });
     });
 
     app.use((_req, res) => {
