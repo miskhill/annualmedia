@@ -12,7 +12,7 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 const port = process.env.REACT_APP_PORT;
-const host = process.env.REACT_APP_HOST;
+// const host = process.env.REACT_APP_HOST;
 console.log(port);
 
 const startServer = async () => {
@@ -38,7 +38,7 @@ const startServer = async () => {
       return res.status(404).render('404', { pageTitle: 'Page Not Found', path: '/404'});
     });
 
-    app.listen(port, host,() => {
+    app.listen(port,() => {
       console.log(`Server is running on port ${port}`);
     });
   } catch (err) {
