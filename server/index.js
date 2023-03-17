@@ -25,7 +25,7 @@ const startServer = async () => {
 
     app.get("*", (_req, res) => {
       console.log(path, 'path');
-      res.sendFile(path.join(__dirname, "build", "index.html"));
+      res.sendFile(path.join(__dirname, "index.html"));
     });
 
     app.use((req, _res, next) => {
