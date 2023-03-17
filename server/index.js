@@ -2,15 +2,15 @@ import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
 import router from "./config/router.js";
-// import path, { dirname } from "path";
-// import { fileURLToPath } from 'url';
+import path, { dirname } from "path";
+import { fileURLToPath } from 'url';
 
 dotenv.config();
 
 const app = express();
 // const path = require('path')
-// const __filename = fileURLToPath(import.meta.url)
-// const __dirname = dirname(__filename)
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 const port = process.env.REACT_APP_PORT;
 // const host = process.env.REACT_APP_HOST;
 console.log(port, 'using this port');
@@ -23,12 +23,15 @@ const startServer = async () => {
     app.use(express.json());
     app.use("/api", router);
 
-    router.get('/', (_req, res) => {
-      res.send('Server home page')
-    })
-    // app.get("*", (_req, res) => {
-    //   res.sendFile(path.join(__dirname, "index.html"));
-    // });
+    // router.get('/', (_req, res) => {
+    //   res.send('Server home page')
+    // })
+
+    app.use(express.static(path.join(__dirname, 'client', 'build')))
+
+    app.get("*", (_req, res) => {
+      res.sendFile(path.join(__dirname, "index.html"));
+    });
 
     app.use((req, _res, next) => {
       console.log(`Request received: ${req.method} - ${req.url}`);
