@@ -23,9 +23,9 @@ const startServer = async () => {
     app.use(express.json());
     app.use("/api", router);
 
-    // router.get('/', (_req, res) => {
-    //   res.send('Server home page')
-    // })
+    router.get('/', (_req, res) => {
+      res.send('Server home page')
+    })
 
     // app.use(express.static(path.join(__dirname, 'client', 'build')))
 
@@ -33,9 +33,9 @@ const startServer = async () => {
     //   res.sendFile(path.join(__dirname,'client', 'build', "index.html"));
     // });
 
-    app.get("/", (_req, res) => {
-      res.sendFile("index.html");
-    });
+    // app.get("/", (_req, res) => {
+    //   res.sendFile("index.html");
+    // });
 
     app.use((req, _res, next) => {
       console.log(`Request received: ${req.method} - ${req.url}`);
