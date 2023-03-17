@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
 import router from "./config/router.js";
-import path, { dirname } from "path";
+// import path, { dirname } from "path";
 // import { fileURLToPath } from 'url';
 
 dotenv.config();
@@ -34,7 +34,7 @@ const startServer = async () => {
     // });
 
     app.get("/", (_req, res) => {
-      res.sendFile(path.join("index.html"));
+      res.sendFile("index.html");
     });
 
     app.use((req, _res, next) => {
