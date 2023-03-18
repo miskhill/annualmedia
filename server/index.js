@@ -25,6 +25,7 @@ const startServer = async () => {
     app.use("/api", router);
 
     app.get('/', (_req, res) => {
+      console.log('server home page request')
       res.send('Server home page')
     })
 
