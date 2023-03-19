@@ -55,7 +55,7 @@ const startServer = async () => {
       return res.status(404).render('404', { pageTitle: 'Page Not Found', path: '/404'});
     });
 
-    app.listen(port || 4000,() => {
+    app.listen(port,() => {
       console.log(`Server is running on port ${port}`);
     });
   } catch (err) {
