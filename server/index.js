@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
 import router from "./config/router.js";
+import cors from "cors";
 // import path, { dirname } from "path";
 // import { fileURLToPath } from 'url';
 
@@ -22,6 +23,7 @@ const startServer = async () => {
     console.log("MongoDB connected ⭐️");
 
     app.use(express.json());
+    app.use(cors());
     app.use("/api", router);
 
     app.get('/', (_req, res) => {
