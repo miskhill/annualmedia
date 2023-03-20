@@ -25,7 +25,7 @@ const startServer = async () => {
     app.use(express.json());
     app.use(
       cors({
-        origin: "https://dashboard.render.com",
+        origin: "https://annualmediaserver.onrender.com",
         methods: ["GET", "POST", "PUT", "DELETE"],
       })
     );
