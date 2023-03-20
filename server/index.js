@@ -14,7 +14,7 @@ const app = express();
 // const __dirname = dirname(__filename)
 const port = process.env.REACT_APP_PORT;
 // const host = process.env.REACT_APP_HOST;
-console.log(port, 'using this port');
+console.log(port, "using this port");
 // console.log(host, 'using this host');
 
 const startServer = async () => {
@@ -23,13 +23,18 @@ const startServer = async () => {
     console.log("MongoDB connected ⭐️");
 
     app.use(express.json());
-    app.use(cors());
+    app.use(
+      cors({
+        origin: "https://dashboard.render.com",
+        methods: ["GET", "POST", "PUT", "DELETE"],
+      })
+    );
     app.use("/api", router);
 
-    app.get('/', (_req, res) => {
-      console.log('server home page request')
-      res.send('Server home page')
-    })
+    app.get("/", (_req, res) => {
+      console.log("server home page request");
+      res.send("Server home page");
+    });
 
     // app.use(express.static(path.join(__dirname, 'client', 'build')))
 
@@ -54,10 +59,12 @@ const startServer = async () => {
 
     app.use((_req, res) => {
       // return res.status(404).json({ message: "Path not found" });
-      return res.status(404).render('404', { pageTitle: 'Page Not Found', path: '/404'});
+      return res
+        .status(404)
+        .render("404", { pageTitle: "Page Not Found", path: "/404" });
     });
 
-    app.listen(port,() => {
+    app.listen(port, () => {
       console.log(`Server is running on port ${port}`);
     });
   } catch (err) {
