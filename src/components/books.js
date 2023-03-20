@@ -25,6 +25,18 @@ const Books = () => {
     getBooks();
   }, []);
 
+  useEffect(() => {
+    const getServerBooks = async () => {
+      try {
+        const { data } = await axios.get("https://annualmediaserver.onrender.com/api/movies");
+        console.log(data, "movies from render server");
+      } catch (err) {
+        console.log(err, "catch error");
+      }
+    };
+    getServerBooks();
+  }, []);
+
   const handleFilterChange = (event) => {
     const newObj = { ...filters, [event.target.name]: event.target.value };
     console.log(newObj);
