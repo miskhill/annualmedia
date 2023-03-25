@@ -27,7 +27,7 @@ const startServer = async () => {
       cors({
         origin: "https://annualmedia.pages.dev",
         // origin: "http://localhost:3000",
-        // methods: ["GET", "POST", "PUT", "DELETE"],
+        methods: ["GET", "POST", "PUT", "DELETE"],
       })
     );
     app.use("/api", router);
@@ -36,16 +36,6 @@ const startServer = async () => {
       console.log("server home page request");
       res.send("Server home page");
     });
-
-    // app.use(express.static(path.join(__dirname, 'client', 'build')))
-
-    // app.get("*", (_req, res) => {
-    //   res.sendFile(path.join(__dirname,'client', 'build', "index.html"));
-    // });
-
-    // app.get("/", (_req, res) => {
-    //   res.sendFile("index.html");
-    // });
 
     app.use((req, _res, next) => {
       console.log(`Request received: ${req.method} - ${req.url}`);
@@ -59,7 +49,6 @@ const startServer = async () => {
     });
 
     app.use((_req, res) => {
-      // return res.status(404).json({ message: "Path not found" });
       return res
         .status(404)
         .render("404", { pageTitle: "Page Not Found", path: "/404" });
