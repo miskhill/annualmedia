@@ -10,13 +10,12 @@ const Books = () => {
   const [ filters, setFilters ] = useState({ searchTerm: '' })
   const [ sortBy, setSortBy ] = useState('createdAt')
   const [ sortedArray, setSortedArray ] = useState([])
-  console.log(books, "books");
 
   useEffect(() => {
     const getBooks = async () => {
       try {
-        const { data } = await axios.get("/api/books");
-        console.log(data, "data");
+        const { data } = await axios.get("https://annualmediaserver.onrender.com/api/books");
+        console.log(data, "render data");
         setBooks(Object.values({ ...data }));
       } catch (err) {
         console.log(err, "catch error");

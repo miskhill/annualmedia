@@ -8,13 +8,12 @@ import AnnualTotals from './utils/annualTotals.js';
 const Movies = () => {
 
   const [movies, setMovies] = useState([]);
-  console.log(movies, "movies")
 
   useEffect(() => {
     try {
-      axios.get("/api/movies").then((res) => {
+      axios.get("https://annualmediaserver.onrender.com/api/movies").then((res) => {
         setMovies(res.data);
-        console.log(res.data, 'giles');
+        console.log(res.data, 'render data');
       });
     }
     catch (err) {

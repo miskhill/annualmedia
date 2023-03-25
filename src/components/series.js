@@ -6,12 +6,12 @@ import AnnualTotals from './utils/annualTotals.js';
 const Series = () => {
 
   const [series, setSeries] = useState([]);
-  console.log(series, "series")
 
   useEffect(() => {
     try {
-      axios.get("/api/series").then((res) => {
+      axios.get("https://annualmediaserver.onrender.com/api/series").then((res) => {
         setSeries(res.data);
+        console.log(res.data, 'render data');
       });
     }
     catch (err) {
