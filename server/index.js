@@ -27,7 +27,7 @@ const startServer = async () => {
       cors({
         origin: "https://annualmedia.pages.dev",
         // origin: "http://localhost:3000",
-        methods: ["GET", "POST", "PUT", "DELETE"],
+        // methods: ["GET", "POST", "PUT", "DELETE"],
       })
     );
     app.use("/api", router);
