@@ -25,7 +25,7 @@ const SeriesUploadCard = () => {
 
   const onSubmit = (series) => {
     axios
-      .post("/api/series", series)
+      .post("https://annualmediaserver.onrender.com/api/series", series)
       .then((res) => {
         console.log(res.data);
         if (res.status === 201) {

@@ -25,7 +25,7 @@ const MovieUploadCard = () => {
 
   const onSubmit = (movie) => {
     axios
-      .post("/api/movies", movie)
+      .post("https://annualmediaserver.onrender.com/api/movies", movie)
       .then((res) => {
         console.log(res.data);
         if (res.status === 201) {

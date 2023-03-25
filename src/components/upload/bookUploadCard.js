@@ -25,7 +25,7 @@ const BookUploadCard = () => {
 
   const onSubmit = (book) => {
     axios
-      .post('/api/books', book)
+      .post('https://annualmediaserver.onrender.com/api/books', book)
       .then((res) => {
         console.log(res.data);
         if (res.status === 201) {
@@ -75,5 +75,6 @@ const BookUploadCard = () => {
 };
 
 export default BookUploadCard;
+
 
 
