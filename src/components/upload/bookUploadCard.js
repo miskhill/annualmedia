@@ -41,32 +41,35 @@ const BookUploadCard = () => {
     <>
       <h1>Book Upload</h1>
       <form onSubmit={handleSubmit(onSubmit)} style={mystyle}>
-        <input placeholder='title' {...register('title', { required: true })} />
+        <input placeholder='Title' {...register('title', { required: true })} />
         {errors.title && <span>The title is required</span>}
 
-        <input placeholder='year' {...register('year', { required: true })} />
+        <input placeholder='Year' {...register('year', { required: true })} />
         {errors.year && <span>The year is required</span>}
 
         <input
-          placeholder='author'
+          placeholder='Author'
           {...register('author', { required: true })}
         />
         {errors.author && <span>The author is required</span>}
 
         <input
-          placeholder='genre'
+          placeholder='Genre'
           {...register('genre', { required: true })}
         />
         {errors.genre && <span>The genre is required</span>}
 
-        <input placeholder='publisher' {...register('publisher')} />
+        <input placeholder='Publisher' {...register('publisher')} />
         {errors.publisher && <span>The publisher is required</span>}
 
-        <input placeholder='pages' {...register('pages')} />
+        <input placeholder='Pages' {...register('pages')} />
         {errors.pages && <span>The amount of pages is required</span>}
 
-        <input placeholder='poster' {...register('poster')} />
+        <input placeholder='Poster' {...register('poster')} />
         {errors.poster && <span>The poster is required</span>}
+
+        <input placeholder='Rating' {...register('rating')} />
+        {errors.rating && <span>The rating is required</span>}
 
         <input type='submit' />
       </form>

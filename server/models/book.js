@@ -40,6 +40,14 @@ const BookSchema = new mongoose.Schema({
     index: true,
     maxlength: 100,
   },
+  rating: {
+    // rating to be between 0 and 5
+    type: Number,
+    min: 0,
+    max: 5,
+    index: true,
+    required: [true, "enter a number between 0 and 5"],
+  },
 }, { timestamps: true });
 
 export default mongoose.model('Book', BookSchema);

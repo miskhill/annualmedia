@@ -79,7 +79,7 @@ const SeriesUploadCard = () => {
         />
         {errors.website && <span>The website is required</span>}
 
-        <input type='submit' onClick={()=> toast('error') } />
+        <input type='submit' onClick={()=> toast.error('error') } />
       </form>
     </>
   );
