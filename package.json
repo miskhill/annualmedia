@@ -26,6 +26,7 @@
     "react-hook-form": "^7.42.0",
     "react-router-dom": "^6.6.1",
     "react-scripts": "4.0.3",
+    "sonner": "^0.3.0",
     "styled-components": "^5.3.6"
   },
   "proxy": "https://annualmediaserver.onrender.com",

@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { Toaster, toast } from 'sonner'
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
@@ -29,7 +30,6 @@ const SeriesUploadCard = () => {
       .then((res) => {
         console.log(res.data);
         if (res.status === 201) {
-          console.log('do i get here')
           navigate("/series");
         }
       })
@@ -40,8 +40,9 @@ const SeriesUploadCard = () => {
 
   return (
     <>
+      <Toaster position="bottom-center" richColors/>
       <h1>Series Upload</h1>
-      <form onSubmit={handleSubmit(onSubmit)} style={mystyle}>
+      <form onSubmit={handleSubmit(onSubmit)} style={mystyle} onClick={() => toast.error('form errors')}>
         <input placeholder='title' {...register("title", { required: true })} />
         {errors.title && <span>The title is required</span>}
 
