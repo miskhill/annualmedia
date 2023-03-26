@@ -11,7 +11,7 @@ const theme = createTheme({
   },
 });
 
-const MediaCard = ({ title, year, genre, image }) => {
+const MediaCard = ({ title, year, genre, image, rating }) => {
   return (
     <ThemeProvider theme={theme}>
       <Card variant='outlined'>
@@ -24,6 +24,9 @@ const MediaCard = ({ title, year, genre, image }) => {
           </Typography>
           <Typography sx={{ mb: 1.5, padding: "1em 1em 0 1em" }} color='text.secondary'>
             {genre}
+          </Typography>
+          <Typography sx={{ mb: 1.5, padding: "1em 1em 0 1em" }} color='text.secondary'>
+            {rating}
           </Typography>
           <CardMedia component='img' src={image} alt='poster'  sx={{ padding: "1em 1em 0 1em", objectFit: "contain" }}/>
         </CardContent>
