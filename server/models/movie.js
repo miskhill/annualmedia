@@ -35,13 +35,11 @@ const MovieSchema = new mongoose.Schema({
     type: String,
     required: [true, "can't be blank"],
     index: true,
-    maxlength: 200,
   },
   poster: {
     type: String,
     required: [true, "can't be blank"],
     index: true,
-    maxlength: 100,
   },
   imdbID: {
     type: String,
