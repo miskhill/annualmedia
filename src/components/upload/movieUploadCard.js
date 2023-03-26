@@ -67,7 +67,7 @@ const MovieUploadCard = () => {
 
         <input
           placeholder='poster'
-          {...register("poster", { required: true })}
+          {...register("poster", { required: true, maxLength: 100 })}
         />
         {errors.poster && <span>The poster is required</span>}
 

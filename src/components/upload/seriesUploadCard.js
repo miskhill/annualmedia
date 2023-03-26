@@ -23,7 +23,7 @@ const SeriesUploadCard = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
+  console.log(errors)
   const onSubmit = (series) => {
     axios
       .post("https://annualmediaserver.onrender.com/api/series", series)
@@ -40,9 +40,9 @@ const SeriesUploadCard = () => {
 
   return (
     <>
-      <Toaster position="bottom-center" richColors/>
+      <Toaster position="bottom-center" richColors />
       <h1>Series Upload</h1>
-      <form onSubmit={handleSubmit(onSubmit)} style={mystyle} onClick={() => toast.error('form errors')}>
+      <form onSubmit={handleSubmit(onSubmit)} style={mystyle} >
         <input placeholder='title' {...register("title", { required: true })} />
         {errors.title && <span>The title is required</span>}
 
@@ -66,9 +66,9 @@ const SeriesUploadCard = () => {
 
         <input
           placeholder='poster'
-          {...register("poster", { required: true })}
+          {...register("poster", { required: true, maxLength: 100 })}
         />
-        {errors.poster && <span>The poster is required</span>}
+        {errors.poster && <span>{`Poster is ${errors.poster.type}`}</span>}
 
         <input placeholder='plot' {...register("plot", { required: true })} />
         {errors.plot && <span>The plot is required</span>}
@@ -79,7 +79,7 @@ const SeriesUploadCard = () => {
         />
         {errors.website && <span>The website is required</span>}
 
-        <input type='submit' />
+        <input type='submit' onClick={()=> toast('error') } />
       </form>
     </>
   );
