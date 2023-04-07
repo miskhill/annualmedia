@@ -16,17 +16,17 @@ const AnnualTotals = ({ arr, year }) => {
   // switch statement to differentiate between movies and series and books and change the h3 text
   const mediaType = (movies, series, books) => {
     switch (arr) {
-      case arr.state === movies:
+      case arr === movies:
         console.log('movie switch', arr);
         return <h3 className='totals'>You have watched {annualTotals(arr, year)} movies this year</h3>
-      case arr.state === series:
+      case arr === series:
         console.log('series switch', arr);
         return <h3 className='totals'>You have watched {annualTotals(arr, year)} series this year</h3>
-      case arr.state === books :
-        console.log('book switch2', arr);
+      case arr === books :
+        console.log('book switch', arr);
         return <h3 className='totals'>You have read {annualTotals(arr, year)} books this year</h3>
       default:
-        console.log('default switch', arr.length, arr.books, arr.movies, arr.series, arr.state, arr.name);
+        console.log('default switch', arr.length, arr);
         return <h3 className='totals'>You have read {annualTotals(arr, year)} books this year</h3>
     }
   }
