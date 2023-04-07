@@ -23,7 +23,8 @@ const Movies = () => {
 
   return (
     <>
-    <AnnualTotals arr={movies} year={2023} />
+      <h3> You have watched <AnnualTotals arr={movies} year={2023} /> movies this year</h3>
+    
     <div>
       {movies.map((movie) => {  
         return (
