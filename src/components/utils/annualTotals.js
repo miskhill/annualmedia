@@ -17,12 +17,16 @@ const AnnualTotals = ({ arr, year }) => {
   const mediaType = (movies, series, books) => {
     switch (arr) {
       case arr === movies:
+        console.log('movie switch');
         return <h3 className='totals'>You have watched {annualTotals(arr, year)} movies this year</h3>
       case arr === series:
+        console.log('series switch');
         return <h3 className='totals'>You have watched {annualTotals(arr, year)} series this year</h3>
       case arr === books:
+        console.log('book switch');
         return <h3 className='totals'>You have read {annualTotals(arr, year)} books this year</h3>
       default:
+        console.log('default switch');
         return <h3 className='totals'>You have read {annualTotals(arr, year)} books this year</h3>
     }
   }
