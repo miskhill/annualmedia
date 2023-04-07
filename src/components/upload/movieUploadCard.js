@@ -86,12 +86,6 @@ const MovieUploadCard = () => {
         />
         {errors.imdbID && <span>The imdbID is required</span>}
 
-        <input
-          placeholder='website'
-          {...register("website", { required: true })}
-        />
-        {errors.website && <span>The website is required</span>}
-
         <input type='submit' />
       </form>
     </>
