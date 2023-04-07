@@ -23,7 +23,7 @@ const AnnualTotals = ({ arr, year }) => {
       case arr === 'books':
         return <h3 className='totals'>You have read {annualTotals(arr, year)} books this year</h3>
       default:
-        return <h3>media</h3>
+        return <h3 className='totals'>You have read {annualTotals(arr, year)} books this year</h3>
     }
   }
   
