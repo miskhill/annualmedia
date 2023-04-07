@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 
 const AnnualTotals = ({ arr, year }) => {
 
@@ -33,9 +33,7 @@ const AnnualTotals = ({ arr, year }) => {
   
   
   return (
-    <div>
-      {annualTotals(arr, year)}
-    </div>
+      annualTotals(arr, year)
   );
 }
 
