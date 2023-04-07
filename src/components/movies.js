@@ -22,7 +22,7 @@ const Movies = () => {
 
   return (
     <>
-      <div>
+      <div className='totals'>
         <h3>
           {" "}
           You have watched <AnnualTotals arr={movies} year={2023} /> movies this

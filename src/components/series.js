@@ -21,7 +21,7 @@ const Series = () => {
 
   return (
     <>
-      <div>
+      <div className='totals'>
         <h3>
           {" "}
           You have watched <AnnualTotals arr={series} year={2023} /> series this

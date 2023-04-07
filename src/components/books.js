@@ -68,7 +68,7 @@ const Books = () => {
     <>
       
       <Filters id="matchesFilters" handleFilterChange={handleFilterChange} handleSortBy={handleSortBy} {...filters}/>
-      <div>
+      <div className='totals'>
       <h3> You have read <AnnualTotals arr={books} year={2023} /> books this year</h3>
       </div>
       <div className="matchesGrid">
