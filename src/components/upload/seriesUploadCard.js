@@ -73,12 +73,6 @@ const SeriesUploadCard = () => {
         <input placeholder='plot' {...register("plot", { required: true })} />
         {errors.plot && <span>The plot is required</span>}
 
-        <input
-          placeholder='website'
-          {...register("website", { required: true })}
-        />
-        {errors.website && <span>The website is required</span>}
-
         <input type='submit' onClick={()=> toast.error('error') } />
       </form>
     </>
