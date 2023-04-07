@@ -26,7 +26,7 @@ const AnnualTotals = ({ arr, year }) => {
         console.log('book switch2', arr);
         return <h3 className='totals'>You have read {annualTotals(arr, year)} books this year</h3>
       default:
-        console.log('default switch', arr.length);
+        console.log('default switch', arr.length, arr.books, arr.movies, arr.series, arr.state, arr.name);
         return <h3 className='totals'>You have read {annualTotals(arr, year)} books this year</h3>
     }
   }
