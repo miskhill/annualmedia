@@ -68,7 +68,9 @@ const Books = () => {
     <>
       
       <Filters id="matchesFilters" handleFilterChange={handleFilterChange} handleSortBy={handleSortBy} {...filters}/>
-      <AnnualTotals arr={books} year={2023} />
+      <div>
+      <h3> You have read <AnnualTotals arr={books} year={2023} /> books this year</h3>
+      </div>
       <div className="matchesGrid">
         { (filters.searchTerm !== '' ? searchBooks : sortedArray ).map(book => { 
           return <MediaCard key={book.id} image={book.poster} { ...book } />
