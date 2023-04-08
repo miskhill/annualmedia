@@ -42,11 +42,6 @@ const MovieSchema = new mongoose.Schema({
     maxlength: 100,
     index: true,
   },
-  imdbID: {
-    type: String,
-    required: [true, "can't be blank"],
-    maxlength: 100,
-  },
   website: {
     type: String,
     index: true,

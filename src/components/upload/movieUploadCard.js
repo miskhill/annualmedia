@@ -44,47 +44,41 @@ const MovieUploadCard = () => {
         {/* register your input into the hook by invoking the "register" function */}
         {/* include validation with required or other standard HTML validation rules */}
         <input
-          placeholder='title'
+          placeholder='Title'
           {...register("title", { required: true })}
         />
         {/* errors will return when field validation fails  */}
         {errors.title && <span>The title is required</span>}
 
-        <input placeholder='year' {...register("year", { required: true })} />
+        <input placeholder='Year' {...register("year", { required: true })} />
         {errors.year && <span>The year is required</span>}
 
         <input
-          placeholder='genre'
+          placeholder='Genre'
           {...register("genre", { required: true })}
         />
         {errors.genre && <span>The genre is required</span>}
 
         <input
-          placeholder='director'
+          placeholder='Director'
           {...register("director", { required: true })}
         />
         {errors.director && <span>The director is required</span>}
 
         <input
-          placeholder='poster'
+          placeholder='Poster'
           {...register("poster", { required: true, maxLength: 100 })}
         />
         {errors.poster && <span>The poster is required</span>}
 
         <input
-          placeholder='actors'
+          placeholder='Actors'
           {...register("actors", { required: true })}
         />
         {errors.actors && <span>The actors are required</span>}
 
-        <input placeholder='plot' {...register("plot", { required: true })} />
+        <input placeholder='Plot' {...register("plot", { required: true })} />
         {errors.plot && <span>The plot is required</span>}
-
-        <input
-          placeholder='imdbID'
-          {...register("imdbID", { required: true })}
-        />
-        {errors.imdbID && <span>The imdbID is required</span>}
 
         <input placeholder='Rating' {...register('rating')} />
         {errors.rating && <span>The rating is required</span>}

@@ -43,34 +43,34 @@ const SeriesUploadCard = () => {
       <Toaster position="bottom-center" richColors />
       <h1>Series Upload</h1>
       <form onSubmit={handleSubmit(onSubmit)} style={mystyle} >
-        <input placeholder='title' {...register("title", { required: true })} />
+        <input placeholder='Title' {...register("title", { required: true })} />
         {errors.title && <span>The title is required</span>}
 
-        <input placeholder='year' {...register("year", { required: true })} />
+        <input placeholder='Year' {...register("year", { required: true })} />
         {errors.year && <span>The year is required</span>}
 
         <input
-          placeholder='director'
+          placeholder='Director'
           {...register("director", { required: true })}
         />
         {errors.director && <span>The director is required</span>}
 
-        <input placeholder='genre' {...register("genre", { required: true })} />
+        <input placeholder='Genre' {...register("genre", { required: true })} />
         {errors.genre && <span>The genre is required</span>}
 
         <input
-          placeholder='actors'
+          placeholder='Actors'
           {...register("actors", { required: true })}
         />
         {errors.actors && <span>The actors are required</span>}
 
         <input
-          placeholder='poster'
+          placeholder='Poster'
           {...register("poster", { required: true, maxLength: 100 })}
         />
         {errors.poster && <span>{`Poster is ${errors.poster.type}`}</span>}
 
-        <input placeholder='plot' {...register("plot", { required: true })} />
+        <input placeholder='Plot' {...register("plot", { required: true })} />
         {errors.plot && <span>The plot is required</span>}
 
         <input placeholder='Rating' {...register('rating')} />
