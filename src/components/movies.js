@@ -38,6 +38,7 @@ const Movies = () => {
               title={movie.title}
               year={movie.year}
               genre={movie.genre}
+              rating={movie.rating}
               image={movie.poster}
             />
           );

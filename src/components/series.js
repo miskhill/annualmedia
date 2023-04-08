@@ -36,7 +36,9 @@ const Series = () => {
               title={series.title}
               year={series.year}
               genre={series.genre}
+              rating={series.rating}
               image={series.poster}
+
             />
           );
         })}
