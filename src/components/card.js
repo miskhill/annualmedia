@@ -29,7 +29,7 @@ const MediaCard = ({ title, year, genre, image, rating }) => {
           {/* <Typography sx={{ mb: 1.5, padding: "1em 1em 0 1em" }} color='text.secondary'>
             {rating}
           </Typography> */}
-          <Typography component="legend" sx={{ mb: 1.5, padding: "1em 1em 0 1em" }} >Rating</Typography>
+          <Typography sx={{ mb: 1.5, padding: "1em 1em 0 1em" }} >Rating</Typography>
           <Rating name="read-only" value={rating} readOnly />
           <CardMedia component='img' src={image} alt='poster'  sx={{ padding: "1em 1em 0 1em", objectFit: "contain" }}/>
         </CardContent>
