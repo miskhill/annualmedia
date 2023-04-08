@@ -1,26 +1,26 @@
-import { useState } from "react"
-import "../navbar.css"
+import { useState } from "react";
+import "../navbar.css";
 
 export default function Navbar() {
-  const [isNavExpanded, setIsNavExpanded] = useState(false)
+  const [isNavExpanded, setIsNavExpanded] = useState(false);
 
   return (
-    <nav className="navigation">
-      <a href="/" className="brand-name">
+    <nav className='navigation'>
+      <a href='/' className='brand-name'>
         Annual Media
       </a>
       <button
-        className="hamburger"
+        className='hamburger'
         onClick={() => {
-          setIsNavExpanded(!isNavExpanded)
+          setIsNavExpanded(!isNavExpanded);
         }}
       >
         {/* hamburger svg code... */}
-        <svg viewBox="5 0 100 80" width="40" height="25">
-  <rect width="60" height="20"></rect>
-  <rect y="30" width="60" height="20"></rect>
-  <rect y="60" width="60" height="20"></rect>
-</svg>
+        <svg viewBox='5 0 100 80' width='40' height='25'>
+          <rect width='60' height='20'></rect>
+          <rect y='30' width='60' height='20'></rect>
+          <rect y='60' width='60' height='20'></rect>
+        </svg>
       </button>
       <div
         className={
@@ -29,13 +29,13 @@ export default function Navbar() {
       >
         <ul>
           <li>
-            <a href="/movies">Movies</a>
+            <a href='/movies'>Movies</a>
           </li>
           <li>
-            <a href="/series">Series</a>
+            <a href='/series'>Series</a>
           </li>
           <li>
-            <a href="/books">Books</a>
+            <a href='/books'>Books</a>
           </li>
         </ul>
       </div>
