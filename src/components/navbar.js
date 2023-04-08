@@ -16,11 +16,11 @@ export default function Navbar() {
         }}
       >
         {/* hamburger svg code... */}
-        {/* <svg viewBox='5 0 100 80' width='40' height='25'>
+        <svg viewBox='5 0 100 80' width='40' height='25'>
           <rect width='60' height='20'></rect>
           <rect y='30' width='60' height='20'></rect>
           <rect y='60' width='60' height='20'></rect>
-        </svg> */}
+        </svg>
       </button>
       <div
         className={
