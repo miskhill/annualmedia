@@ -24,18 +24,6 @@ const Books = () => {
     getBooks();
   }, []);
 
-  useEffect(() => {
-    const getServerBooks = async () => {
-      try {
-        const { data } = await axios.get("https://annualmediaserver.onrender.com/api/movies");
-        console.log(data, "movies from render server");
-      } catch (err) {
-        console.log(err, "catch error");
-      }
-    };
-    getServerBooks();
-  }, []);
-
   const handleFilterChange = (event) => {
     const newObj = { ...filters, [event.target.name]: event.target.value };
     console.log(newObj);
@@ -54,6 +42,7 @@ const Books = () => {
   }
 
   useEffect(() => {
+    console.log(sortBy, 'sortBy')
     setSortedArray(whichSort(books, sortBy))
   }, [sortBy, books])
 
@@ -76,20 +65,6 @@ const Books = () => {
           return <MediaCard key={book.id} image={book.poster} { ...book } />
         })}
       </div>
-
-      {/* <div>
-        {books.map((book) => {
-          return (
-            <MediaCard
-              key={book.id}
-              title={book.title}
-              year={book.year}
-              genre={book.genre}
-              image={book.poster}
-            />
-          );
-        })}
-      </div> */}
     </>
   );
 };
