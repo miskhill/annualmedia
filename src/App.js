@@ -12,8 +12,9 @@ import "./App.css";
 function App() {
 
   return (
+    <>
+    <NavBar />
     <BrowserRouter>
-      <NavBar />
       <Routes>
         <Route exact path='/' element={<Home />} />
         <Route exact path='/movies' element={<Movies />} />
@@ -22,7 +23,8 @@ function App() {
         {/* <Route exact path="/signIn" element={<SignIn />} />
         <Route exact path="/signUp" element={<SignUp />} /> */}
       </Routes>
-    </BrowserRouter>
+      </BrowserRouter>
+      </>
   );
 }
 
