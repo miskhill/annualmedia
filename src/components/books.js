@@ -39,7 +39,7 @@ const Books = () => {
       return array.sort((a,b)=> (a[sortBy] < b[sortBy] ? 1 : -1))
     } if 
       (sortBy === 'Year' || sortBy === 'Rating'){
-        return array.sort((a,b)=> (a[sortBy] > b[sortBy] ? 1 : -1))
+        return array.sort((a,b)=> (a[sortBy] > b[sortBy] ? -1 : 1))
       }
     
     else {
