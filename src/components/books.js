@@ -35,9 +35,14 @@ const Books = () => {
   };
 
   const whichSort = (array, sortBy) => {
-    if (sortBy === 'Genre' || sortBy === 'Title' || sortBy === 'CreatedAt' || sortBy === 'Year' || sortBy === 'Author' || sortBy === 'Rating') {
+    if (sortBy === 'Genre' || sortBy === 'Title' || sortBy === 'CreatedAt' || sortBy === 'Author') {
       return array.sort((a,b)=> (a[sortBy] < b[sortBy] ? 1 : -1))
-    } else {
+    } if 
+      (sortBy === 'Year' || sortBy === 'Rating'){
+        return array.sort((a,b)=> (a[sortBy] > b[sortBy] ? 1 : -1))
+      }
+    
+    else {
       return array.sort((a,b)=> (a[sortBy] > b[sortBy] ? 1 : -1))
     }
   }
