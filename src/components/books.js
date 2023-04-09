@@ -26,10 +26,11 @@ const Books = () => {
 
   const handleFilterChange = (event) => {
     const newObj = { ...filters, [event.target.name]: event.target.value };
-    console.log(newObj);
+    console.log(newObj, "newObj", filters, "filters");
     setFilters(newObj);
   };
   const handleSortBy = (event) => {
+    console.log(event.target.value, "event.target.value");
     setSortBy(event.target.value);
   };
 
