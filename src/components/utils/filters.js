@@ -39,8 +39,9 @@ const Filters = ({ handleFilterChange, handleSortBy, sortBy, searchTerm }) => {
         } } onChange={handleSortBy} name='sortBy' value={sortBy}>
           <option value='createdAt'>Year</option>
           <option value='title'>Title</option>
-          <option value='views'>Author</option>
-          <option value='rating'>Genre</option>
+          <option value='author'>Author</option>
+          <option value='genre'>Genre</option>
+          <option value='rating'>Rating</option>
         </select>
       </div>
     </>
