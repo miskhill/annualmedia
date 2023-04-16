@@ -4,6 +4,7 @@ import Home from "./components/home.js";
 import Movies from "./components/movies.js";
 import Books from "./components/books.js";
 import Series from "./components/series.js";
+import PageNotFound from "./components/pageNotFound.js";
 // import SignIn from './components/signIn.js';
 // import SignUp from './components/signUp.js';
 import NavBar from "./components/navbar.js";
@@ -22,6 +23,7 @@ function App() {
         <Route exact path='/series' element={<Series />} />
         {/* <Route exact path="/signIn" element={<SignIn />} />
         <Route exact path="/signUp" element={<SignUp />} /> */}
+          <Route path="*" element={<PageNotFound />} />
       </Routes>
       </BrowserRouter>
       </>
