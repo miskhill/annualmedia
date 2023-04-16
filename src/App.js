@@ -24,7 +24,7 @@ function App() {
         {/* <Route exact path="/signIn" element={<SignIn />} />
         <Route exact path="/signUp" element={<SignUp />} /> */}
           <Route path="*" element={<PageNotFound />} />
-      </Routes>
+        </Routes>
       </BrowserRouter>
       </>
   );
