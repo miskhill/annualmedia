@@ -21,10 +21,6 @@ const Movies = () => {
     }
   }, []);
 
-  // const handleSearch = (e) => {
-  //   setSearchTerm(e.target.value);
-  // };
-
   // refactor handleSearch to debounce the typed in result
 
   const debounceSearch = (e) => {
@@ -41,16 +37,23 @@ const Movies = () => {
     return movie.title.toLowerCase().includes(searchTerm.toLowerCase());
   });
 
-  // clear button functionality
-  const clearSearch = () => {
-    setSearchTerm("");
-  };
-
   return (
     <>
       <div className='search'>
         <input type='text' onChange={debounceSearch} />
         <button>Search</button>
+        <h3>
+          {" "}
+          display search results for {searchTerm}
+          {filteredMovies.length}
+          
+          {filteredMovies.length === 1 ? "movie" : "movies"}
+
+
+          {filteredMovies.length === 0 && searchTerm !== "" && (
+            <p>No movies found</p>
+          )}
+        </h3>
       </div>
       <div className='totals'>
         <h3>
@@ -62,6 +65,19 @@ const Movies = () => {
 
       <div>
         {movies.map((movie) => {
+          // if search term is used then display the filtered results
+          if (searchTerm !== "") {
+            return (
+              <MediaCard
+                key={movie.id}
+                title={movie.title}
+                year={movie.year}
+                genre={movie.genre}
+                rating={movie.rating}
+                image={movie.poster}
+              />
+            );
+          }
           return (
             <MediaCard
               key={movie.id}
