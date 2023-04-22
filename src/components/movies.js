@@ -21,9 +21,23 @@ const Movies = () => {
     }
   }, []);
 
-  const handleSearch = (e) => {
-    setSearchTerm(e.target.value);
-  };
+  // const handleSearch = (e) => {
+  //   setSearchTerm(e.target.value);
+  // };
+
+  // refactor handleSearch to debounce the typed in result
+
+  const debounceSearch = (e) => {
+  
+      const searchTerm = e.target.value;
+    const timer = setTimeout(() => {
+      setSearchTerm(searchTerm);
+    }, 500);
+    console.log(timer, "timer");
+    return () => clearTimeout(timer);
+  }
+
+
 
   const filteredMovies = movies.filter((movie) => {
     console.log(filteredMovies, "filteredMovies");
@@ -38,7 +52,7 @@ const Movies = () => {
   return (
     <>
       <div className='search'>
-        <input type='text' onChange={handleSearch} />
+        <input type='text' onChange={debounceSearch} />
         <button>Search</button>
       </div>
       {searchTerm.length > 0 && (
