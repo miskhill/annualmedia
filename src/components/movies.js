@@ -28,16 +28,13 @@ const Movies = () => {
   // refactor handleSearch to debounce the typed in result
 
   const debounceSearch = (e) => {
-  
-      const searchTerm = e.target.value;
+    const searchTerm = e.target.value;
     const timer = setTimeout(() => {
       setSearchTerm(searchTerm);
     }, 1500);
     console.log(timer, "timer");
     return () => clearTimeout(timer);
-  }
-
-
+  };
 
   const filteredMovies = movies.filter((movie) => {
     console.log(filteredMovies, "filteredMovies");
@@ -46,8 +43,8 @@ const Movies = () => {
 
   // clear button functionality
   const clearSearch = () => {
-      setSearchTerm("");
-    }
+    setSearchTerm("");
+  };
 
   return (
     <>
@@ -55,15 +52,6 @@ const Movies = () => {
         <input type='text' onChange={debounceSearch} />
         <button>Search</button>
       </div>
-      {searchTerm.length > 0 && (
-        <div className='search-results'>
-          <h3>
-            Search results for <span>{searchTerm}</span>
-            <button onClick={clearSearch}><i className="fas fa-times"></i>Clear</button>
-          </h3>
-        </div>
-      )}
-
       <div className='totals'>
         <h3>
           {" "}
