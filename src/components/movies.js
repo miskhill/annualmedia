@@ -1,5 +1,4 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import MediaCard from "./card.js";
 import axios from "axios";
 import AnnualTotals from "./utils/annualTotals.js";
@@ -7,6 +6,7 @@ import AnnualTotals from "./utils/annualTotals.js";
 const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [filteredMovies, setFilteredMovies] = useState([]);
 
   useEffect(() => {
     try {
@@ -32,10 +32,14 @@ const Movies = () => {
     return () => clearTimeout(timer);
   };
 
-  const filteredMovies = movies.filter((movie) => {
-    return movie.title.toLowerCase().includes(searchTerm.toLowerCase());
-  });
-  console.log(filteredMovies, "filteredMovies");
+  useEffect(() => {
+    setFilteredMovies(
+      movies.filter((movie) =>
+        movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    );
+  }, [movies, searchTerm]);
+
   return (
     <>
       <div className='search'>
@@ -43,11 +47,9 @@ const Movies = () => {
         <button>Search</button>
         <h3>
           {" "}
-          display search results for {searchTerm}, showing{" "} {
-          filteredMovies.length}
-          
-          {filteredMovies.length === 1 ? "movie" : "movies"}
-
+          display search results for {searchTerm}, showing{" "}
+          {searchTerm !== "" ? filteredMovies.length : movies.length}
+          {searchTerm !== "" && (filteredMovies.length === 1 ? " movie" : " movies")}
 
           {filteredMovies.length === 0 && searchTerm !== "" && (
             <p>No movies found</p>
@@ -63,31 +65,27 @@ const Movies = () => {
       </div>
 
       <div>
-        {movies.map((movie) => {
-          // if search term is used then display the filtered result
-          if (searchTerm !== "") {
-            return (
+        {(searchTerm !== ""
+          ? filteredMovies.map((movie) => (
               <MediaCard
-                key={filteredMovies[0].id}
-                title={filteredMovies[0].title}
-                year={filteredMovies[0].year}
-                genre={filteredMovies[0].genre}
-                rating={filteredMovies[0].rating}
-                image={filteredMovies[0].poster}
+                key={movie.id}
+                title={movie.title}
+                year={movie.year}
+                genre={movie.genre}
+                rating={movie.rating}
+                image={movie.poster}
               />
-            );
-          }
-          return (
-            <MediaCard
-              key={movie.id}
-              title={movie.title}
-              year={movie.year}
-              genre={movie.genre}
-              rating={movie.rating}
-              image={movie.poster}
-            />
-          );
-        })}
+            ))
+          : movies.map((movie) => (
+              <MediaCard
+                key={movie.id}
+                title={movie.title}
+                year={movie.year}
+                genre={movie.genre}
+                rating={movie.rating}
+                image={movie.poster}
+              />
+            )))}
       </div>
     </>
   );
