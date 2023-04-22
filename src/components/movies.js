@@ -6,6 +6,7 @@ import AnnualTotals from "./utils/annualTotals.js";
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     try {
@@ -20,8 +21,35 @@ const Movies = () => {
     }
   }, []);
 
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const filteredMovies = movies.filter((movie) => {
+    console.log(filteredMovies, "filteredMovies");
+    return movie.title.toLowerCase().includes(searchTerm.toLowerCase());
+  });
+
+  // clear button functionality
+  const clearSearch = () => {
+      setSearchTerm("");
+    }
+
   return (
     <>
+      <div className='search'>
+        <input type='text' onChange={handleSearch} />
+        <button>Search</button>
+      </div>
+      {searchTerm.length > 0 && (
+        <div className='search-results'>
+          <h3>
+            Search results for <span>{searchTerm}</span>
+            <button onClick={clearSearch}><i className="fas fa-times"></i>Clear</button>
+          </h3>
+        </div>
+      )}
+
       <div className='totals'>
         <h3>
           {" "}
