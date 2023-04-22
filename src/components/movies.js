@@ -69,12 +69,12 @@ const Movies = () => {
           if (searchTerm !== "") {
             return (
               <MediaCard
-                key={movie.id}
-                title={movie.title}
-                year={movie.year}
-                genre={movie.genre}
-                rating={movie.rating}
-                image={movie.poster}
+                key={filteredMovies[0].id}
+                title={filteredMovies[0].title}
+                year={filteredMovies[0].year}
+                genre={filteredMovies[0].genre}
+                rating={filteredMovies[0].rating}
+                image={filteredMovies[0].poster}
               />
             );
           }
