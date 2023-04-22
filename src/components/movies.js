@@ -33,10 +33,9 @@ const Movies = () => {
   };
 
   const filteredMovies = movies.filter((movie) => {
-    console.log(filteredMovies, "filteredMovies");
     return movie.title.toLowerCase().includes(searchTerm.toLowerCase());
   });
-
+  console.log(filteredMovies, "filteredMovies");
   return (
     <>
       <div className='search'>
@@ -65,7 +64,7 @@ const Movies = () => {
 
       <div>
         {movies.map((movie) => {
-          // if search term is used then display the filtered results
+          // if search term is used then display the filtered result
           if (searchTerm !== "") {
             return (
               <MediaCard
