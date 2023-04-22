@@ -44,8 +44,8 @@ const Movies = () => {
         <button>Search</button>
         <h3>
           {" "}
-          display search results for {searchTerm}
-          {filteredMovies.length}
+          display search results for {searchTerm}, showing{" "} {
+          filteredMovies.length}
           
           {filteredMovies.length === 1 ? "movie" : "movies"}
 
