@@ -43,20 +43,21 @@ const Series = () => {
 
   return (
     <>
-      <div className='search'>
-        <input type='text' onChange={debounceSearch} />
-        <button>Search</button>
-        <h3>
-          {" "}
-          display search results for {searchTerm}, showing{" "}
-          {searchTerm !== "" ? filteredSeries.length : series.length}
-          {searchTerm !== "" && (filteredSeries.length === 1 ? " series" : " series")}
+      <div className='search' style={{ backgroundColor: '#8c1839', color: '#ffffff' }}>
+  <input type='text' onChange={debounceSearch} style={{ backgroundColor: '#ffffff', color: '#000000' }} />
+  <button style={{ backgroundColor: '#ffffff', color: '#8c1839' }}>Search</button>
+  <h3>
+    {" "}
+    display search results for {searchTerm}, showing{" "}
+    {searchTerm !== "" ? filteredSeries.length : series.length}
+    {searchTerm !== "" && (filteredSeries.length === 1 ? " series" : " series")}
 
-          {filteredSeries.length === 0 && searchTerm !== "" && (
-            <p>No series found</p>
-          )}
-        </h3>
-      </div>
+    {filteredSeries.length === 0 && searchTerm !== "" && (
+      <p>No series found</p>
+    )}
+  </h3>
+</div>
+
       <div className='totals'>
         <h3>
           {" "}
