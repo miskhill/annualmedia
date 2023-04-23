@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import MediaCard from "./card.js";
+import axios from "axios";
 import AnnualTotals from "./utils/annualTotals.js";
 
 const Series = () => {
   const [series, setSeries] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [filteredSeries, setFilteredSeries] = useState([]);
 
   useEffect(() => {
     try {
@@ -20,6 +21,8 @@ const Series = () => {
     }
   }, []);
 
+  // refactor handleSearch to debounce the typed in result
+
   const debounceSearch = (e) => {
     const searchTerm = e.target.value;
     const timer = setTimeout(() => {
@@ -29,46 +32,65 @@ const Series = () => {
     return () => clearTimeout(timer);
   };
 
-  const filteredSeries = series.filter((series) => {
-    return series.title.toLowerCase().includes(searchTerm.toLowerCase());
-  });
-
-  const uniqueSeries = [...new Map(filteredSeries.map(item => [item.id, item])).values()];
+  useEffect(() => {
+    setFilteredSeries(
+      Array.from(new Set(series.filter((serie) =>
+        serie.title.toLowerCase().includes(searchTerm.toLowerCase())
+      ).map(serie => serie.title)))
+      .map(title => series.find(serie => serie.title === title))
+    );
+  }, [series, searchTerm]);
 
   return (
     <>
-      <div className="search">
-        <input type="text" onChange={debounceSearch} />
+      <div className='search'>
+        <input type='text' onChange={debounceSearch} />
         <button>Search</button>
         <h3>
+          {" "}
           display search results for {searchTerm}, showing{" "}
-          {uniqueSeries.length}
-          {uniqueSeries.length === 1 ? " series" : " series"}
-          {uniqueSeries.length === 0 && searchTerm !== "" && (
+          {searchTerm !== "" ? filteredSeries.length : series.length}
+          {searchTerm !== "" && (filteredSeries.length === 1 ? " series" : " series")}
+
+          {filteredSeries.length === 0 && searchTerm !== "" && (
             <p>No series found</p>
           )}
         </h3>
       </div>
-      <div className="totals">
+      <div className='totals'>
         <h3>
-          You have watched <AnnualTotals arr={series} year={2023} /> series
-          this year
+          {" "}
+          You have watched <AnnualTotals arr={series} year={2023} /> series this
+          year
         </h3>
       </div>
+
       <div>
-        {uniqueSeries.map((series) => (
-          <MediaCard
-            key={series.id}
-            title={series.title}
-            year={series.year}
-            genre={series.genre}
-            rating={series.rating}
-            image={series.poster}
-          />
-        ))}
+        {(searchTerm !== ""
+          ? filteredSeries.map((serie) => (
+              <MediaCard
+                key={serie.id}
+                title={serie.title}
+                year={serie.year}
+                genre={serie.genre}
+                rating={serie.rating}
+                image={serie.poster}
+              />
+            ))
+          : series.map((serie) => (
+              <MediaCard
+                key={serie.id}
+                title={serie.title}
+                year={serie.year}
+                genre={serie.genre}
+                rating={serie.rating}
+                image={serie.poster}
+              />
+            )))}
       </div>
     </>
   );
 };
 
 export default Series;
+
