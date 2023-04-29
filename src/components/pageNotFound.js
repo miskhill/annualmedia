@@ -7,7 +7,7 @@ const PageNotFound = () => {
       <h1>Page Not Found</h1>
       <img src="/vamp404.png" alt="404 Page Not Found" />
       <p>
-        <a href="/">Go Home</a>
+        <a href="/">Go Back To Home</a>
       </p>
     </div>
   );
