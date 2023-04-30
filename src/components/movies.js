@@ -16,7 +16,7 @@ const Movies = () => {
     setLoading(true)
     try {
       axios
-        .get("https://annualmediaserver.onrender.com/api/movies?limit=10")
+        .get("https://annualmediaserver.onrender.com/api/movies")
         .then((res) => {
           setMovies(res.data);
           setLoading(false)
