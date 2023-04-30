@@ -108,8 +108,7 @@ const Movies = () => {
   useEffect(() => {
     try {
       axios
-        // .get("https://annualmediaserver.onrender.com/api/movies")
-        .get("/api/movies")
+        .get("https://annualmediaserver.onrender.com/api/movies")
         .then((res) => {
           setMovies(res.data);
           console.log(res.data, "render data");
