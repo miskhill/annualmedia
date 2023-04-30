@@ -8,13 +8,16 @@ const Series = () => {
   const [series, setSeries] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredSeries, setFilteredSeries] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     try {
       axios
         .get("https://annualmediaserver.onrender.com/api/series")
         .then((res) => {
           setSeries(res.data);
+          setLoading(false);
           console.log(res.data, "render data");
         });
     } catch (err) {
@@ -80,36 +83,41 @@ const Series = () => {
           year
         </h3>
       </div>
-
-      <Grid container spacing={2}>
-        {searchTerm !== ""
-          ? filteredSeries.map((serie) => (
-              <Grid item xs={12} sm={6} md={4} lg={3}>
-                <MediaCard
-                  key={serie.id}
-                  title={serie.title}
-                  year={serie.year}
-                  genre={serie.genre}
-                  rating={serie.rating}
-                  image={serie.poster}
-                  plot={serie.plot}
-                />
-              </Grid>
-            ))
-          : series.map((serie) => (
-              <Grid item xs={12} sm={6} md={4} lg={3}>
-                <MediaCard
-                  key={serie.id}
-                  title={serie.title}
-                  year={serie.year}
-                  genre={serie.genre}
-                  rating={serie.rating}
-                  image={serie.poster}
-                  plot={serie.plot}
-                />
-              </Grid>
-            ))}
-      </Grid>
+      {loading ? (
+        <div className="loading-container" style={{ display: loading ? 'flex' : 'none', justifyContent: 'center', alignItems: 'center' }}>
+        <img src="loading.gif" alt="Loading" />
+      </div>
+      ) : (
+        <Grid container spacing={2}>
+          {searchTerm !== ""
+            ? filteredSeries.map((serie) => (
+                <Grid item xs={12} sm={6} md={4} lg={3}>
+                  <MediaCard
+                    key={serie.id}
+                    title={serie.title}
+                    year={serie.year}
+                    genre={serie.genre}
+                    rating={serie.rating}
+                    image={serie.poster}
+                    plot={serie.plot}
+                  />
+                </Grid>
+              ))
+            : series.map((serie) => (
+                <Grid item xs={12} sm={6} md={4} lg={3}>
+                  <MediaCard
+                    key={serie.id}
+                    title={serie.title}
+                    year={serie.year}
+                    genre={serie.genre}
+                    rating={serie.rating}
+                    image={serie.poster}
+                    plot={serie.plot}
+                  />
+                </Grid>
+              ))}
+        </Grid>
+      )}
     </>
   );
 };

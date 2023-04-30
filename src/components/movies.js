@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import MediaCard from "./card.js";
 import axios from "axios";
 import AnnualTotals from "./utils/annualTotals.js";
-// import the loading gif from public folder
 
 import Grid from "@mui/material/Grid";
 
@@ -70,8 +69,10 @@ const Movies = () => {
         </h3>
       </div>
 
-      {loading ? ( // Check loading state variable
-        <img src="loading.gif" alt="Loading" /> // Display loading text or loading gif here
+      {loading ? ( 
+        <div className="loading-container" style={{ display: loading ? 'flex' : 'none', justifyContent: 'center', alignItems: 'center' }}>
+        <img src="loading.gif" alt="Loading" />
+      </div>
       ) : (
         <Grid container spacing={3}>
           {searchTerm !== ""
