@@ -1,40 +1,162 @@
-import React from "react";
+// import React from "react";
+// import Card from "@mui/material/Card";
+// import Rating from "@mui/material/Rating";
+// import Typography from "@mui/material/Typography";
+// import CardContent from "@mui/material/CardContent";
+// import CardMedia from "@mui/material/CardMedia";
+// import { styled } from "@mui/material/styles";
+
+// const StyledCard = styled(Card)({
+//   display: "flex",
+//   flexDirection: "column",
+//   borderRadius: 12,
+//   overflow: "hidden",
+//   boxShadow: "0px 2px 5px rgba(0,0,0,0.25)",
+// });
+
+// const StyledCardContent = styled(CardContent)({
+//   flex: 1,
+// });
+
+// const StyledTitle = styled(Typography)({
+//   fontSize: 24,
+//   fontWeight: "bold",
+//   marginBottom: "0.5em",
+//   color: "#333",
+// });
+
+// const StyledSubtitle = styled(Typography)({
+//   fontSize: 16,
+//   fontWeight: "bold",
+//   marginBottom: "0.5em",
+//   color: "#555",
+// });
+
+// const StyledText = styled(Typography)({
+//   fontSize: 16,
+//   marginBottom: "0.5em",
+//   color: "#777",
+// });
+
+// const StyledImage = styled(CardMedia)({
+//   paddingTop: "5.25%",
+// });
+
+// const MediaCard = ({ title, year, genre, image, rating }) => {
+//   return (
+//     <StyledCard>
+//       <StyledImage component="img" src={image} alt="poster" />
+//       <StyledCardContent>
+//         <StyledTitle>{title}</StyledTitle>
+//         <StyledSubtitle>{year}</StyledSubtitle>
+//         <StyledText>{genre}</StyledText>
+//         <StyledText>
+//           Rating: <Rating name="read-only" value={rating} readOnly />
+//         </StyledText>
+//       </StyledCardContent>
+//     </StyledCard>
+//   );
+// };
+
+// export default MediaCard;
+
+import React, { useState } from "react";
 import Card from "@mui/material/Card";
-import Rating from '@mui/material/Rating';
-import Typography from "@mui/material/Typography";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
+import CardActions from "@mui/material/CardActions";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import Collapse from "@mui/material/Collapse";
+import IconButton from "@mui/material/IconButton";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { styled } from "@mui/material/styles";
 
-const theme = createTheme({
-  palette: {
-    mode: "dark",
-  },
+const StyledCard = styled(Card)({
+  display: "flex",
+  flexDirection: "column",
+  borderRadius: 12,
+  overflow: "hidden",
+  boxShadow: "0px 2px 5px rgba(0,0,0,0.25)",
+  "--card-background": "#F7F7F7",
+  "--card-text-color": "#333",
 });
 
-const MediaCard = ({ title, year, genre, image, rating }) => {
+const StyledCardContent = styled(CardContent)({
+  flex: 1,
+  backgroundColor: "var(--card-background)",
+});
+
+const StyledTitle = styled(Typography)({
+  fontSize: 24,
+  fontWeight: "bold",
+  marginBottom: "0.5em",
+  color: "var(--card-text-color)",
+});
+
+const StyledSubtitle = styled(Typography)({
+  fontSize: 16,
+  fontWeight: "bold",
+  marginBottom: "0.5em",
+  color: "#555",
+});
+
+const StyledText = styled(Typography)({
+  fontSize: 16,
+  marginBottom: "0.5em",
+  color: "#777",
+});
+
+const StyledImage = styled(CardMedia)({
+  paddingTop: "5.25%",
+});
+
+const MediaCard = ({ title, year, genre, rating, image, plot }) => {
+  const [expanded, setExpanded] = useState(false);
+
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
+
   return (
-    <ThemeProvider theme={theme}>
-      <Card variant='outlined'>
+    <StyledCard sx={{ maxWidth: 345, margin: "10px" }}>
+      <StyledImage component="img" height="500" image={image} alt={title} />
+      <StyledCardContent>
+        <StyledTitle gutterBottom variant="h5" component="div">
+          {title}
+        </StyledTitle>
+        <StyledText variant="body2" color="text.secondary">
+          Year: {year}
+        </StyledText>
+        <StyledText variant="body2" color="text.secondary">
+          Genre: {genre}
+        </StyledText>
+        <StyledText variant="body2" color="text.secondary">
+          Rating: {rating}
+        </StyledText>
+      </StyledCardContent>
+      <CardActions disableSpacing>
+        <IconButton
+          aria-label="show more"
+          onClick={handleExpandClick}
+          aria-expanded={expanded}
+          sx={{ transform: expanded ? "rotate(180deg)" : "rotate(0)" }}
+        >
+          <ExpandMoreIcon />
+        </IconButton>
+      </CardActions>
+      <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography sx={{ mb: 1.5, padding: "1em 1em 0 1em"}} color='text.primary'>
-            {title}
-          </Typography>
-          <Typography sx={{ mb: 1.5, padding: "1em 1em 0 1em" }} color='text.secondary'>
-            {year}
-          </Typography>
-          <Typography sx={{ mb: 1.5, padding: "1em 1em 0 1em" }} color='text.secondary'>
-            {genre}
-          </Typography>
-          <Typography sx={{ mb: 1.5, padding: "1em 1em 0 1em" }} >
-            Rating
-          <Rating name="read-only" value={rating} readOnly />
-          </Typography>
-          <CardMedia component='img' src={image} alt='poster'  sx={{ padding: "1em 1em 0 1em", objectFit: "contain" }}/>
+          <Typography paragraph>Plot:</Typography>
+          <Typography paragraph>{plot}</Typography>
         </CardContent>
-      </Card>
-    </ThemeProvider>
+      </Collapse>
+    </StyledCard>
   );
 };
 
 export default MediaCard;
+
+
+
+
