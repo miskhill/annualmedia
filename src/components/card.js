@@ -65,9 +65,9 @@ const MediaCard = ({ title, year, genre, rating, image, plot }) => {
         <StyledText variant="body2" color="text.secondary">
           Year: {year}
         </StyledText>
-        <StyledText variant="body2" color="text.secondary">
+        <StyledSubtitle variant="body2" color="text.secondary">
           Genre: {genre}
-        </StyledText>
+        </StyledSubtitle>
         <StyledText variant="body2" color="text.secondary">
           Rating: {rating}
         </StyledText>
