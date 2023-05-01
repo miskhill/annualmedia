@@ -83,7 +83,7 @@ const MovieUploadCard = () => {
         <input placeholder='Rating' {...register('rating')} />
         {errors.rating && <span>The rating is required</span>}
 
-        <input type='submit' />
+        <input className="submit-button" type="submit" value="Submit" />
       </form>
     </>
   );

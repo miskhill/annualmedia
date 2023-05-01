@@ -76,7 +76,7 @@ const SeriesUploadCard = () => {
         <input placeholder='Rating' {...register('rating')} />
         {errors.rating && <span>The rating is required</span>}
 
-        <input type='submit' onClick={()=> toast.error('error') } />
+        <input className='submit-button' type='submit' value='Submit' onClick={()=> toast.error('error') } />
       </form>
     </>
   );
