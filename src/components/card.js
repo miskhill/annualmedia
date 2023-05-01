@@ -6,6 +6,7 @@ import CardActions from "@mui/material/CardActions";
 import Typography from "@mui/material/Typography";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
+import Rating from '@mui/material/Rating';
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { styled } from "@mui/material/styles";
 
@@ -68,9 +69,7 @@ const MediaCard = ({ title, year, genre, rating, image, plot }) => {
         <StyledSubtitle variant="body2" color="text.secondary">
           Genre: {genre}
         </StyledSubtitle>
-        <StyledText variant="body2" color="text.secondary">
-          Rating: {rating}
-        </StyledText>
+          <Rating name="read-only" value={rating} readOnly />
       </StyledCardContent>
       <CardActions disableSpacing>
         <IconButton
