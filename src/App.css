@@ -98,3 +98,10 @@ h1 {
   transform: skew(-15deg) rotate(-15deg);
   margin-left: -10px;
 }
+
+.home-background {
+  background-image: url("https://cdn.mos.cms.futurecdn.net/rDJegQJaCyGaYysj2g5XWY.jpg");
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+}

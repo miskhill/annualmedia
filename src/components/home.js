@@ -1,11 +1,12 @@
-import ImportCard from "./importCard";
+import React from 'react';
+import ImportCard from './importCard';
 
-const Home = () => {
+function Home() {
   return (
-    <div>
+    <div className="home-background">
       <ImportCard />
     </div>
   );
-};
+}
 
 export default Home;
