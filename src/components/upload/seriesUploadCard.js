@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 const SeriesUploadCard = () => {
   const mystyle = {
     color: "white",
-    backgroundColor: "#39a2db",
+    backgroundColor: "#e50914",
     padding: "10px",
     fontFamily: "Arial",
     display: "flex",

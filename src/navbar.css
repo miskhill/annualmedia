@@ -81,7 +81,7 @@
     padding: 1.5rem 0;
   }
   .navigation-menu li:hover {
-    background-color: #eee;
+    background-color: #e50914;
   }
 }
 @media screen and (max-width: 768px) {
