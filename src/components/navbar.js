@@ -4,11 +4,27 @@ import "../navbar.css";
 export default function Navbar() {
   const [isNavExpanded, setIsNavExpanded] = useState(false);
 
+
+  const brandNameStyle = {
+    fontFamily:"Bebas Neue, sans-serif",
+    fontSize: "50px",
+    fontWeight: "bold",
+    letterSpacing: "-2px",
+    textDecoration: "none",
+    color: "#e50914",
+    textShadow: "2px 2px 0 #000000",
+  };
+
   return (
     <nav className='navigation'>
-      <a href='/' className='brand-name'>
-        Annual Media
+      <a
+        href='/'
+        className='brand-name'
+        style={brandNameStyle}
+      >
+        ANNUAL MEDIA
       </a>
+
       <button
         className='hamburger'
         onClick={() => {

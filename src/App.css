@@ -5,6 +5,11 @@
   margin: 0;
 }
 
+@font-face {
+  font-family: 'Bebas Neue';
+  src: local('Bebas Neue'), url(https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap) format('woff2');
+}
+
 
 .App {
   width: 100vw;
@@ -68,7 +73,7 @@ ul.nav li:hover {
 }
 
 ul.nav li.active {
-  background: #39a2db;
+  background:#e50914;
 }
 
 .TabContent {
@@ -80,4 +85,16 @@ ul.nav li.active {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+h1 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 3em;
+  font-weight: bold;
+  letter-spacing: -0.04em;
+  color: #e50914;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 #000000;
+  transform: skew(-15deg) rotate(-15deg);
+  margin-left: -10px;
 }
