@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import MediaCard from "./card.js";
 import axios from "axios";
 import AnnualTotals from "./utils/annualTotals.js";
-
+import Filter from './utils/filter.js';
 import Grid from "@mui/material/Grid";
 
 const Movies = () => {
@@ -10,6 +10,18 @@ const Movies = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [filters, setFilters] = useState({
+    genres: [],
+    ratings: [],
+    years: [],
+    createdAts: [],
+  });
+  const [selectedFilters, setSelectedFilters] = useState({
+    genre: "",
+    rating: "",
+    year: "",
+    createdAt: "",
+  });
 
   useEffect(() => {
     setLoading(true);
@@ -75,6 +87,14 @@ const Movies = () => {
           year
         </h3>
       </div>
+
+      <Filter
+        filters={filters}
+        setFilters={setFilters}
+        selectedFilters={selectedFilters}
+        setSelectedFilters={setSelectedFilters}
+        mediaType="movies"
+      />
 
       {loading ? (
         <div
