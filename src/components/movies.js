@@ -12,13 +12,13 @@ const Movies = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setLoading(true)
+    setLoading(true);
     try {
       axios
         .get("https://annualmediaserver.onrender.com/api/movies")
         .then((res) => {
           setMovies(res.data);
-          setLoading(false)
+          setLoading(false);
           console.log(res.data, "render data");
         });
     } catch (err) {
@@ -47,32 +47,46 @@ const Movies = () => {
 
   return (
     <>
-      <div className='search'>
-        <input type='text' onChange={debounceSearch} />
-        <button>Search</button>
-        <h3>
-          {" "}
-          display search results for {searchTerm}, showing{" "}
-          {searchTerm !== "" ? filteredMovies.length : movies.length}
-          {searchTerm !== "" &&
-            (filteredMovies.length === 1 ? " movie" : " movies")}
-          {filteredMovies.length === 0 && searchTerm !== "" && (
-            <p>No movies found</p>
-          )}
-        </h3>
-      </div>
-      <div className='totals'>
-        <h3>
+<div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "20px" }} className='search'>
+  <input style={{ width: "250px", height: "30px", borderRadius: "5px", border: "1px solid #ccc", padding: "5px 10px", fontSize: "16px", marginRight: "10px" }} type='text' onChange={debounceSearch} />
+  <button style={{ backgroundColor: "#e50914", color: "#fff", border: "none", borderRadius: "5px", padding: "5px 10px", fontSize: "16px", cursor: "pointer" }}>Search</button>
+  {searchTerm !== "" && (
+    <h3 style={{ fontSize: "20px", fontWeight: "bold", margin: "0" }}>
+      {" "}
+      display search results for {searchTerm}, showing {filteredMovies.length}{" "}
+      {filteredMovies.length === 1 ? "movie" : "movies"}
+    </h3>
+  )}
+</div>
+
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          marginBottom: "20px",
+          textAlign: "center",
+        }}
+        className='totals'
+      >
+        <h3 style={{ fontSize: "20px", fontWeight: "bold", margin: "0" }}>
           {" "}
           You have watched <AnnualTotals arr={movies} year={2023} /> movies this
           year
         </h3>
       </div>
 
-      {loading ? ( 
-        <div className="loading-container" style={{ display: loading ? 'flex' : 'none', justifyContent: 'center', alignItems: 'center' }}>
-        <img src="loading.gif" alt="Loading" />
-      </div>
+      {loading ? (
+        <div
+          className='loading-container'
+          style={{
+            display: loading ? "flex" : "none",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <img src='loading.gif' alt='Loading' />
+        </div>
       ) : (
         <Grid container spacing={3}>
           {searchTerm !== ""
