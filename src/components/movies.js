@@ -38,6 +38,29 @@ const Movies = () => {
     }
   }, []);
 
+  useEffect(() => {
+    const filtered = movies
+      .filter((movie) => movie.title.toLowerCase().includes(searchTerm.toLowerCase()))
+      .filter((movie) => {
+        let match = true;
+        Object.keys(selectedFilters).forEach((key) => {
+          if (selectedFilters[key] !== "") {
+            if (Array.isArray(movie[key])) {
+              if (!movie[key].includes(selectedFilters[key])) {
+                match = false;
+              }
+            } else {
+              if (movie[key] !== selectedFilters[key]) {
+                match = false;
+              }
+            }
+          }
+        });
+        return match;
+      });
+    setFilteredMovies(filtered);
+  }, [movies, searchTerm, selectedFilters]);
+
   // refactor handleSearch to debounce the typed in result
 
   const debounceSearch = (e) => {

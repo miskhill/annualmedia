@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import MediaCard from "./card.js";
 import axios from "axios";
 import AnnualTotals from "./utils/annualTotals.js";
+import Filter from "./utils/filter.js";
 import Grid from "@mui/material/Grid";
 
 const Series = () => {
@@ -9,6 +10,18 @@ const Series = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredSeries, setFilteredSeries] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [filters, setFilters] = useState({
+    genres: [],
+    ratings: [],
+    years: [],
+    createdAts: [],
+  });
+  const [selectedFilters, setSelectedFilters] = useState({
+    genre: "",
+    rating: "",
+    year: "",
+    createdAt: "",
+  });
 
   useEffect(() => {
     setLoading(true);
@@ -24,6 +37,29 @@ const Series = () => {
       console.log(err, "catch error");
     }
   }, []);
+
+  useEffect(() => {
+    const filtered = series
+      .filter((series) => series.title.toLowerCase().includes(searchTerm.toLowerCase()))
+      .filter((series) => {
+        let match = true;
+        Object.keys(selectedFilters).forEach((key) => {
+          if (selectedFilters[key] !== "") {
+            if (Array.isArray(series[key])) {
+              if (!series[key].includes(selectedFilters[key])) {
+                match = false;
+              }
+            } else {
+              if (series[key] !== selectedFilters[key]) {
+                match = false;
+              }
+            }
+          }
+        });
+        return match;
+      });
+    setFilteredSeries(filtered);
+  }, [series, searchTerm, selectedFilters]);
 
   // refactor handleSearch to debounce the typed in result
 
@@ -127,6 +163,13 @@ const Series = () => {
           series this year
         </h3>
       </div>
+      <Filter
+        filters={filters}
+        setFilters={setFilters}
+        selectedFilters={selectedFilters}
+        setSelectedFilters={setSelectedFilters}
+        mediaType='series'
+      />
       {loading ? (
         <div
           className='loading-container'
