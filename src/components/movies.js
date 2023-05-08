@@ -140,9 +140,10 @@ const Movies = () => {
 
       <Filter
         filters={filters}
-        setFilters={setFilters}
         selectedFilters={selectedFilters}
-        setSelectedFilters={setSelectedFilters}
+        onChange={(filterType, value) =>
+          setSelectedFilters({ ...selectedFilters, [filterType]: value })
+        }
         mediaType='movies'
       />
 

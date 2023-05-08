@@ -67,3 +67,4 @@ const Filter = ({ filters, selectedFilters, onChange }) => {
 };
 
 export default Filter;
+
