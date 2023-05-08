@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import MediaCard from "./card.js";
 import axios from "axios";
 import AnnualTotals from "./utils/annualTotals.js";
-import Filter from './utils/filter.js';
+import Filter from "./utils/filter.js";
 import Grid from "@mui/material/Grid";
 
 const Movies = () => {
@@ -39,14 +39,19 @@ const Movies = () => {
   }, []);
 
   useEffect(() => {
-    const filtered = movies
-      .filter((movie) => {
-        return movie.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
-        (selectedFilters.genre === "" || movie.genre.includes(selectedFilters.genre)) &&
-        (selectedFilters.rating === "" || movie.rating === selectedFilters.rating) &&
-        (selectedFilters.year === "" || movie.year === parseInt(selectedFilters.year)) &&
-        (selectedFilters.createdAt === "" || movie.createdAt === selectedFilters.createdAt);
-      });
+    const filtered = movies.filter((movie) => {
+      return (
+        movie.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
+        (selectedFilters.genre === "" ||
+          movie.genre.includes(selectedFilters.genre)) &&
+        (selectedFilters.rating === "" ||
+          movie.rating === selectedFilters.rating) &&
+        (selectedFilters.year === "" ||
+          movie.year === parseInt(selectedFilters.year)) &&
+        (selectedFilters.createdAt === "" ||
+          movie.createdAt === selectedFilters.createdAt)
+      );
+    });
     setFilteredMovies(filtered);
   }, [movies, searchTerm, selectedFilters]);
 
@@ -71,17 +76,50 @@ const Movies = () => {
 
   return (
     <>
-<div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "20px" }} className='search'>
-  <input style={{ width: "250px", height: "30px", borderRadius: "5px", border: "1px solid #ccc", padding: "5px 10px", fontSize: "16px", marginRight: "10px" }} type='text' onChange={debounceSearch} />
-  <button style={{ backgroundColor: "#e50914", color: "#fff", border: "none", borderRadius: "5px", padding: "5px 10px", fontSize: "16px", cursor: "pointer" }}>Search</button>
-  {searchTerm !== "" && (
-    <h3 style={{ fontSize: "20px", fontWeight: "bold", margin: "0" }}>
-      {" "}
-      display search results for {searchTerm}, showing {filteredMovies.length}{" "}
-      {filteredMovies.length === 1 ? "movie" : "movies"}
-    </h3>
-  )}
-</div>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          marginBottom: "20px",
+        }}
+        className='search'
+      >
+        <input
+          style={{
+            width: "250px",
+            height: "30px",
+            borderRadius: "5px",
+            border: "1px solid #ccc",
+            padding: "5px 10px",
+            fontSize: "16px",
+            marginRight: "10px",
+          }}
+          type='text'
+          onChange={debounceSearch}
+        />
+        <button
+          style={{
+            backgroundColor: "#e50914",
+            color: "#fff",
+            border: "none",
+            borderRadius: "5px",
+            padding: "5px 10px",
+            fontSize: "16px",
+            cursor: "pointer",
+          }}
+        >
+          Search
+        </button>
+        {searchTerm !== "" && (
+          <h3 style={{ fontSize: "20px", fontWeight: "bold", margin: "0" }}>
+            {" "}
+            display search results for {searchTerm}, showing{" "}
+            {filteredMovies.length}{" "}
+            {filteredMovies.length === 1 ? "movie" : "movies"}
+          </h3>
+        )}
+      </div>
 
       <div
         style={{
@@ -105,7 +143,7 @@ const Movies = () => {
         setFilters={setFilters}
         selectedFilters={selectedFilters}
         setSelectedFilters={setSelectedFilters}
-        mediaType="movies"
+        mediaType='movies'
       />
 
       {loading ? (
