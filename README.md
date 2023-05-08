@@ -1,14 +1,3 @@
-# Learns - before I forget
-CRA uses React script v5 and MUI was not supporting this causing not found
-Differences in React Router - uses Element rather than Component
-In my controller I had named my fetch variable the same as the collection which needed re-naming! const movies to fetch movies. Wasn't too smart.
-
-Used ClickUp for project management
-
-[ClickUp](public/Screenshot%202023-01-21%20at%2011.23.12.png)
-
-Sure, here's a sample README file for your full stack app:
-
 # AnnualMedia
 
 AnnualMedia is a full stack app designed to help you remember the movies, series, and books that you have consumed. It includes a MongoDB database, a server built with Node.js and Express, and a frontend built with React.
@@ -84,6 +73,17 @@ Contributions to the app are welcome. To contribute, follow these steps:
 ## License
 
 The app is released under the ISC license.
+
+# Learns - before I forget
+CRA uses React script v5 and MUI was not supporting this causing not found
+Differences in React Router - uses Element rather than Component
+In my controller I had named my fetch variable the same as the collection which needed re-naming! const movies to fetch movies. Wasn't too smart.
+
+Used ClickUp for project management
+
+[ClickUp](public/Screenshot%202023-01-21%20at%2011.23.12.png)
+
+Sure, here's a sample README file for your full stack app:
 
 ## Contact
 
