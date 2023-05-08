@@ -54,39 +54,90 @@ const Series = () => {
     <>
       <div
         className='search'
-        style={{ backgroundColor: "#8c1839", color: "#ffffff" }}
+        style={{
+          backgroundColor: "#8c1839",
+          color: "#ffffff",
+          padding: "10px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: "10px",
+        }}
       >
         <input
           type='text'
           onChange={debounceSearch}
-          style={{ backgroundColor: "#ffffff", color: "#000000" }}
+          style={{
+            backgroundColor: "#ffffff",
+            color: "#000000",
+            padding: "5px",
+            border: "none",
+            borderRadius: "5px",
+            width: "50%",
+          }}
         />
-        <button style={{ backgroundColor: "#ffffff", color: "#8c1839" }}>
+        <button
+          style={{
+            backgroundColor: "#ffffff",
+            color: "#8c1839",
+            padding: "5px",
+            border: "none",
+            borderRadius: "5px",
+          }}
+        >
           Search
         </button>
-        <h3>
-          {" "}
-          display search results for {searchTerm}, showing{" "}
-          {searchTerm !== "" ? filteredSeries.length : series.length}
-          {searchTerm !== "" &&
-            (filteredSeries.length === 1 ? " series" : " series")}
-          {filteredSeries.length === 0 && searchTerm !== "" && (
-            <p>No series found</p>
-          )}
-        </h3>
+        {searchTerm !== "" && (
+          <h3
+            style={{
+              margin: "0",
+              fontSize: "18px",
+              fontWeight: "normal",
+              textAlign: "center",
+            }}
+          >
+            Displaying search results for "{searchTerm}", showing{" "}
+            {filteredSeries.length}{" "}
+            {filteredSeries.length === 1 ? "series" : "series"}
+            {filteredSeries.length === 0 && (
+              <p style={{ margin: "0" }}>No series found</p>
+            )}
+          </h3>
+        )}
       </div>
 
-      <div className='totals'>
-        <h3>
-          {" "}
-          You have watched <AnnualTotals arr={series} year={2023} /> series this
-          year
+      <div
+        className='totals'
+        style={{
+          backgroundColor: "#f5f5f5",
+          color: "#8c1839",
+          padding: "10px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <h3 style={{ margin: "0", fontSize: "18px", fontWeight: "normal" }}>
+          You have watched{" "}
+          <AnnualTotals
+            arr={series}
+            year={2023}
+            style={{ fontWeight: "bold" }}
+          />{" "}
+          series this year
         </h3>
       </div>
       {loading ? (
-        <div className="loading-container" style={{ display: loading ? 'flex' : 'none', justifyContent: 'center', alignItems: 'center' }}>
-        <img src="loading.gif" alt="Loading" />
-      </div>
+        <div
+          className='loading-container'
+          style={{
+            display: loading ? "flex" : "none",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <img src='loading.gif' alt='Loading' />
+        </div>
       ) : (
         <Grid container spacing={2}>
           {searchTerm !== ""
