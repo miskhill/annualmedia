@@ -96,8 +96,6 @@ Used ClickUp for project management
 
 [ClickUp](public/Screenshot%202023-01-21%20at%2011.23.12.png)
 
-Sure, here's a sample README file for your full stack app:
-
 ## Contact
 
 If you have any questions or need support, you can contact the author at [insert email or social media here].
