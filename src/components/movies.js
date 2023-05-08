@@ -32,7 +32,7 @@ const Movies = () => {
     const searchTerm = e.target.value;
     const timer = setTimeout(() => {
       setSearchTerm(searchTerm);
-    }, 1500);
+    }, 500);
     console.log(timer, "timer");
     return () => clearTimeout(timer);
   };
