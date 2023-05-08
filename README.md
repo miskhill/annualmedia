@@ -2,6 +2,19 @@
 
 AnnualMedia is a full stack app designed to help you remember the movies, series, and books that you have consumed. It includes a MongoDB database, a server built with Node.js and Express, and a frontend built with React.
 
+Sure, you can add the following section to the README to provide information on where the app is hosted:
+
+## Deployment
+
+The app is currently deployed on [annualmedia.pages.dev](https://annualmedia.pages.dev/). You can access the live version of the app by visiting the website. Note that the live version may be running a different version of the code than the local version on your machine.
+
+To deploy the app to your own hosting platform, follow these steps:
+
+1. Build the frontend by navigating to the `client` folder and running `npm run build`.
+2. Copy the build folder to your hosting platform.
+3. Start the server on your hosting platform by navigating to the `server` folder and running `npm run serve`.
+4. Configure your hosting platform to serve the `index.html` file in the build folder as the root file for your app.
+
 ## Installation
 
 To install the app, follow these steps:
