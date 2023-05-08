@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
-import MediaCard from "./card.js";
 import Filters from "./utils/filters.js";
 import axios from "axios";
 import AnnualTotals from "./utils/annualTotals.js";
-import Grid from "@mui/material/Grid";
+import BookGrid from "./bookGrid.js";
 
 const Books = () => {
   const [books, setBooks] = useState([]);
@@ -96,19 +95,7 @@ const Books = () => {
           <img src='loading.gif' alt='Loading' />
         </div>
       ) : (
-        <div className='row matchesGrid'>
-          {(filters.searchTerm !== "" ? searchBooks : sortedArray).map(
-            (book) => {
-              return (
-                <Grid item xs={12} sm={6} md={4} lg={3} key={book.id}>
-                  <div key={book.id} className='col-md-4 mb-4'>
-                    <MediaCard image={book.poster} {...book} />
-                  </div>
-                </Grid>
-              );
-            }
-          )}
-        </div>
+        <BookGrid books={filters.searchTerm !== "" ? searchBooks : sortedArray}/>
       )}
     </>
   );
