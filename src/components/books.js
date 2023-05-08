@@ -3,6 +3,7 @@ import MediaCard from "./card.js";
 import Filters from "./utils/filters.js";
 import axios from "axios";
 import AnnualTotals from "./utils/annualTotals.js";
+import Grid from "@mui/material/Grid";
 
 const Books = () => {
   const [books, setBooks] = useState([]);
@@ -84,19 +85,30 @@ const Books = () => {
         </h3>
       </div>
       {loading ? (
-        <div className="loading-container" style={{ display: loading ? 'flex' : 'none', justifyContent: 'center', alignItems: 'center' }}>
-        <img src="loading.gif" alt="Loading" />
-      </div>
+        <div
+          className='loading-container'
+          style={{
+            display: loading ? "flex" : "none",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <img src='loading.gif' alt='Loading' />
+        </div>
       ) : (
-      <div className='row matchesGrid'>
-        {(filters.searchTerm !== "" ? searchBooks : sortedArray).map((book) => {
-          return (
-            <div key={book.id} className='col-md-4 mb-4'>
-              <MediaCard image={book.poster} {...book} />
-            </div>
-          );
-        })}
-          </div>
+        <div className='row matchesGrid'>
+          {(filters.searchTerm !== "" ? searchBooks : sortedArray).map(
+            (book) => {
+              return (
+                <Grid item xs={12} sm={6} md={4} lg={3} key={book.id}>
+                  <div key={book.id} className='col-md-4 mb-4'>
+                    <MediaCard image={book.poster} {...book} />
+                  </div>
+                </Grid>
+              );
+            }
+          )}
+        </div>
       )}
     </>
   );

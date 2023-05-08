@@ -89,7 +89,7 @@ const Movies = () => {
                 </Grid>
               ))
             : movies.map((movie) => (
-                <Grid item xs={12} sm={6} md={4} key={movie.id}>
+                <Grid item xs={12} sm={6} md={4} lg={3} key={movie.id}>
                   <MediaCard
                     title={movie.title}
                     year={movie.year}
