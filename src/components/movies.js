@@ -40,23 +40,12 @@ const Movies = () => {
 
   useEffect(() => {
     const filtered = movies
-      .filter((movie) => movie.title.toLowerCase().includes(searchTerm.toLowerCase()))
       .filter((movie) => {
-        let match = true;
-        Object.keys(selectedFilters).forEach((key) => {
-          if (selectedFilters[key] !== "") {
-            if (Array.isArray(movie[key])) {
-              if (!movie[key].includes(selectedFilters[key])) {
-                match = false;
-              }
-            } else {
-              if (movie[key] !== selectedFilters[key]) {
-                match = false;
-              }
-            }
-          }
-        });
-        return match;
+        return movie.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
+        (selectedFilters.genre === "" || movie.genre.includes(selectedFilters.genre)) &&
+        (selectedFilters.rating === "" || movie.rating === selectedFilters.rating) &&
+        (selectedFilters.year === "" || movie.year === parseInt(selectedFilters.year)) &&
+        (selectedFilters.createdAt === "" || movie.createdAt === selectedFilters.createdAt);
       });
     setFilteredMovies(filtered);
   }, [movies, searchTerm, selectedFilters]);
@@ -72,13 +61,13 @@ const Movies = () => {
     return () => clearTimeout(timer);
   };
 
-  useEffect(() => {
-    setFilteredMovies(
-      movies.filter((movie) =>
-        movie.title.toLowerCase().includes(searchTerm.toLowerCase())
-      )
-    );
-  }, [movies, searchTerm]);
+  // useEffect(() => {
+  //   setFilteredMovies(
+  //     movies.filter((movie) =>
+  //       movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+  //     )
+  //   );
+  // }, [movies, searchTerm]);
 
   return (
     <>
