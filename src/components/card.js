@@ -52,38 +52,32 @@ const StyledImage = styled(CardMedia)({
 
 const MediaCard = ({ title, year, genre, rating, image, plot }) => {
   const [expanded, setExpanded] = useState(false);
-  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
+
+  const handleImageError = () => {
+    console.log("Failed to load image, showing shimmer effect");
+    setImageError(true);
+  };
 
   const handleExpandClick = () => {
     console.log("Image loaded");
     setExpanded(!expanded);
   };
 
-  const handleImageLoad = () => {
-    console.log("Image loaded");
-    setImageLoaded(true);
-  };
-
-  console.log("Rendering with imageLoaded: ", imageLoaded);
-
-  // const handleImageError = () => {
-  //   // Don't set imageLoaded to true. This will keep the shimmer.
-  // };
-
   return (
     <StyledCard sx={{ maxWidth: 345, margin: "10px" }}>
-      {imageLoaded ? (
+      {imageError ? (
+        <div className='shimmer-wrapper'>
+          {/* Add your shimmer effect here */}
+        </div>
+      ) : (
         <StyledImage
           component='img'
           height='500'
           image={image}
           alt={title}
-          onLoad={handleImageLoad}
+          onError={handleImageError}
         />
-      ) : (
-        <div className='shimmer-wrapper'>
-          {console.log("Rendering shimmer")}
-        </div>
       )}
       <StyledCardContent>
         <StyledTitle gutterBottom variant='h5' component='div'>
