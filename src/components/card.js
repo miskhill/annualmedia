@@ -55,8 +55,16 @@ const MediaCard = ({ title, year, genre, rating, image, plot }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
 
   const handleExpandClick = () => {
+    console.log("Image loaded");
     setExpanded(!expanded);
   };
+
+  const handleImageLoad = () => {
+    console.log("Image loaded");
+    setImageLoaded(true);
+  };
+
+  console.log("Rendering with imageLoaded: ", imageLoaded);
 
   // const handleImageError = () => {
   //   // Don't set imageLoaded to true. This will keep the shimmer.
@@ -70,11 +78,12 @@ const MediaCard = ({ title, year, genre, rating, image, plot }) => {
           height='500'
           image={image}
           alt={title}
-          onLoad={() => setImageLoaded(true)}
-          // onError={handleImageError}
+          onLoad={handleImageLoad}
         />
       ) : (
-        <div className='shimmer-wrapper'></div>
+        <div className='shimmer-wrapper'>
+          {console.log("Rendering shimmer")}
+        </div>
       )}
       <StyledCardContent>
         <StyledTitle gutterBottom variant='h5' component='div'>
