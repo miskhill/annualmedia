@@ -58,9 +58,9 @@ const MediaCard = ({ title, year, genre, rating, image, plot }) => {
     setExpanded(!expanded);
   };
 
-  const handleImageError = () => {
-    // Don't set imageLoaded to true. This will keep the shimmer.
-  };
+  // const handleImageError = () => {
+  //   // Don't set imageLoaded to true. This will keep the shimmer.
+  // };
 
   return (
     <StyledCard sx={{ maxWidth: 345, margin: "10px" }}>
@@ -71,7 +71,7 @@ const MediaCard = ({ title, year, genre, rating, image, plot }) => {
           image={image}
           alt={title}
           onLoad={() => setImageLoaded(true)}
-          onError={handleImageError}
+          // onError={handleImageError}
         />
       ) : (
         <div className='shimmer-wrapper'></div>
