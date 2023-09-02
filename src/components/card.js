@@ -9,7 +9,7 @@ import IconButton from "@mui/material/IconButton";
 import Rating from '@mui/material/Rating';
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { styled } from "@mui/material/styles";
-import "./App.css";
+import '../App.css';
 
 const StyledCard = styled(Card)({
   display: "flex",
