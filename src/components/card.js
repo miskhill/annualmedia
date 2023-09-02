@@ -9,6 +9,7 @@ import IconButton from "@mui/material/IconButton";
 import Rating from '@mui/material/Rating';
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { styled } from "@mui/material/styles";
+import styles from src/App.css;
 
 const StyledCard = styled(Card)({
   display: "flex",
@@ -51,6 +52,7 @@ const StyledImage = styled(CardMedia)({
 
 const MediaCard = ({ title, year, genre, rating, image, plot }) => {
   const [expanded, setExpanded] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -58,7 +60,17 @@ const MediaCard = ({ title, year, genre, rating, image, plot }) => {
 
   return (
     <StyledCard sx={{ maxWidth: 345, margin: "10px" }}>
-      <StyledImage component="img" height="500" image={image} alt={title} />
+    {imageLoaded ? (
+      <StyledImage
+        component="img"
+        height="500"
+        image={image}
+        alt={title}
+        onLoad={() => setImageLoaded(true)}
+      />
+    ) : (
+      <div className="shimmer-wrapper"></div>
+    )}
       <StyledCardContent>
         <StyledTitle gutterBottom variant="h5" component="div">
           {title}
