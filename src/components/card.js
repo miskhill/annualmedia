@@ -6,10 +6,10 @@ import CardActions from "@mui/material/CardActions";
 import Typography from "@mui/material/Typography";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
-import Rating from '@mui/material/Rating';
+import Rating from "@mui/material/Rating";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { styled } from "@mui/material/styles";
-import '../App.css';
+import "../App.css";
 
 const StyledCard = styled(Card)({
   display: "flex",
@@ -64,32 +64,33 @@ const MediaCard = ({ title, year, genre, rating, image, plot }) => {
 
   return (
     <StyledCard sx={{ maxWidth: 345, margin: "10px" }}>
-    {imageLoaded ? (
-      <StyledImage
-        component="img"
-        height="500"
-        image={image}
-        alt={title}
-        onLoad={() => setImageLoaded(true)}
-      />
-    ) : (
-      <div className="shimmer-wrapper" onError={handleImageError}></div>
-    )}
+      {imageLoaded ? (
+        <StyledImage
+          component='img'
+          height='500'
+          image={image}
+          alt={title}
+          onLoad={() => setImageLoaded(true)}
+          onError={handleImageError}
+        />
+      ) : (
+        <div className='shimmer-wrapper'></div>
+      )}
       <StyledCardContent>
-        <StyledTitle gutterBottom variant="h5" component="div">
+        <StyledTitle gutterBottom variant='h5' component='div'>
           {title}
         </StyledTitle>
-        <StyledText variant="body2" color="text.secondary">
+        <StyledText variant='body2' color='text.secondary'>
           Year: {year}
         </StyledText>
-        <StyledSubtitle variant="body2" color="text.secondary">
+        <StyledSubtitle variant='body2' color='text.secondary'>
           Genre: {genre}
         </StyledSubtitle>
-          <Rating name="read-only" value={rating} readOnly />
+        <Rating name='read-only' value={rating} readOnly />
       </StyledCardContent>
       <CardActions disableSpacing>
         <IconButton
-          aria-label="show more"
+          aria-label='show more'
           onClick={handleExpandClick}
           aria-expanded={expanded}
           sx={{ transform: expanded ? "rotate(180deg)" : "rotate(0)" }}
@@ -97,7 +98,7 @@ const MediaCard = ({ title, year, genre, rating, image, plot }) => {
           <ExpandMoreIcon />
         </IconButton>
       </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
+      <Collapse in={expanded} timeout='auto' unmountOnExit>
         <CardContent>
           <Typography paragraph>Plot:</Typography>
           <Typography paragraph>{plot}</Typography>
@@ -108,7 +109,3 @@ const MediaCard = ({ title, year, genre, rating, image, plot }) => {
 };
 
 export default MediaCard;
-
-
-
-
