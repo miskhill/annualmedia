@@ -67,8 +67,11 @@ const MediaCard = ({ title, year, genre, rating, image, plot }) => {
   return (
     <StyledCard sx={{ maxWidth: 345, margin: "10px" }}>
       {imageError ? (
-        <div className='shimmer-wrapper'>
-          {/* Add your shimmer effect here */}
+        <div
+          className='shimmer-wrapper'
+          style={{ width: "100%", height: "500px" }}
+        >
+          {console.log("Rendering shimmer")}
         </div>
       ) : (
         <StyledImage
