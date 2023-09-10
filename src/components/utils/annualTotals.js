@@ -28,9 +28,9 @@ const AnnualTotals = ({ arr, year, handleYearChange }) => {
         <input type="number" value={inputYear} onChange={handleInputChange} />
         <button type="submit">Update Year</button>
       </form>
-      {annualTotals(arr, year)}
+      {annualTotals(arr, inputYear)}
     </div>
-  );
+  );  
 };
 
 export default AnnualTotals;
