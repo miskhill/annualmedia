@@ -98,7 +98,7 @@ const Books = () => {
           <img src='loading.gif' alt='Loading' />
         </div>
       ) : (
-        <BookGrid books={filters.searchTerm !== "" ? searchBooks : sortedArray}/>
+        <BookGrid books={filters.searchTerm !== "" || selectedYear !== 2023 ? searchBooks : sortedArray} />
       )}
     </>
   );
