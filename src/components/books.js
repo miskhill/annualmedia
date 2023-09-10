@@ -50,9 +50,6 @@ const Books = () => {
     ) {
       return array.sort((a, b) => (a[sortBy] < b[sortBy] ? 1 : -1));
     } else {
-      // if (sortBy === "Year" || sortBy === "Rating") {
-      //   return array.sort((a, b) => (a[sortBy] < b[sortBy] ? -1 : 1));
-      // } else {
       return array.sort((a, b) => (a[sortBy] > b[sortBy] ? 1 : -1));
     }
   };
@@ -82,7 +79,6 @@ const Books = () => {
       <div className='totals'>
         <h3>
           <AnnualTotals arr={books} year={selectedYear} handleYearChange={setSelectedYear} />
-          Total
         </h3>
       </div>
       {loading ? (

@@ -55,12 +55,10 @@ const MediaCard = ({ title, year, genre, rating, image, plot }) => {
   const [imageError, setImageError] = useState(false);
 
   const handleImageError = () => {
-    console.log("Failed to load image, showing shimmer effect");
     setImageError(true);
   };
 
   const handleExpandClick = () => {
-    console.log("Image loaded");
     setExpanded(!expanded);
   };
 
@@ -71,7 +69,6 @@ const MediaCard = ({ title, year, genre, rating, image, plot }) => {
           className='shimmer-wrapper'
           style={{ width: "100%", height: "500px" }}
         >
-          {console.log("Rendering shimmer")}
         </div>
       ) : (
         <StyledImage

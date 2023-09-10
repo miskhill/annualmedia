@@ -84,9 +84,7 @@ const Movies = () => {
         className='totals'
       >
         <h3 style={{ fontSize: "20px", fontWeight: "bold", margin: "0" }}>
-          {" "}
-          You have watched <AnnualTotals arr={movies} year={selectedYear} handleYearChange={setSelectedYear} /> movies this
-          year
+          <AnnualTotals arr={movies} year={selectedYear} handleYearChange={setSelectedYear} />
         </h3>
       </div>
 
