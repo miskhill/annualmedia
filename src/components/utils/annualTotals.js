@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 
 const AnnualTotals = ({ arr, year, handleYearChange }) => {
-  const [inputYear, setInputYear] = useState(year);
+  const [inputYear, setInputYear] = useState(year.toString());
 
   const handleInputChange = (e) => {
-    setInputYear(e.target.value === 'All' ? 'All' : parseInt(e.target.value));
+    setInputYear(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleYearChange(inputYear);
+    handleYearChange(inputYear === 'All' ? 'All' : parseInt(inputYear));
   };
 
   const annualTotals = (arr, year) => {
