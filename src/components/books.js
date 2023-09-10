@@ -11,6 +11,8 @@ const Books = () => {
   const [sortBy, setSortBy] = useState("createdAt");
   const [sortedArray, setSortedArray] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [selectedYear, setSelectedYear] = useState(2023);
+
 
   useEffect(() => {
     setLoading(true);
@@ -64,10 +66,10 @@ const Books = () => {
     const regexSearch = new RegExp(filters.searchTerm, "i");
     setSearchBooks(
       (sortedArray ? sortedArray : whichSort(books, sortBy)).filter((book) => {
-        return regexSearch.test(book.title);
+        return regexSearch.test(book.title) && book.createdAt && book.createdAt.slice(0, 4) === selectedYear.toString();
       })
     );
-  }, [filters, sortBy, sortedArray, books]);
+  }, [filters, sortBy, sortedArray, books, selectedYear]);  
 
   return (
     <>
@@ -80,7 +82,8 @@ const Books = () => {
       <div className='totals'>
         <h3>
           {" "}
-          You have read <AnnualTotals arr={books} year={2023} /> books this year
+          You have read <AnnualTotals arr={books} year={selectedYear} handleYearChange={setSelectedYear} />
+ books this year
         </h3>
       </div>
       {loading ? (
