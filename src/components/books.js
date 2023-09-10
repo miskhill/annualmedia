@@ -11,7 +11,7 @@ const Books = () => {
   const [sortBy, setSortBy] = useState("createdAt");
   const [sortedArray, setSortedArray] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [selectedYear, setSelectedYear] = useState(2023);
+  const [selectedYear, setSelectedYear] = useState('All');
 
 
   useEffect(() => {
@@ -69,9 +69,7 @@ const Books = () => {
         return regexSearch.test(book.title) && (selectedYear === 'All' || (book.createdAt && book.createdAt.slice(0, 4) === selectedYear.toString()));
       })
     );    
-    console.log('Updated searchBooks:', updatedSearchBooks);
-    setSearchBooks(updatedSearchBooks);
-  }, [filters, sortBy, sortedArray, books, selectedYear]);   
+  }, [filters, sortBy, sortedArray, books, selectedYear]);    
 
   return (
     <>
@@ -100,7 +98,7 @@ const Books = () => {
           <img src='loading.gif' alt='Loading' />
         </div>
       ) : (
-        <BookGrid books={filters.searchTerm !== "" || selectedYear !== 2023 ? searchBooks : sortedArray} />
+        <BookGrid books={(filters.searchTerm !== "" || selectedYear !== 'All') ? searchBooks : sortedArray} />
       )}
     </>
   );
