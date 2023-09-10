@@ -56,12 +56,13 @@ const Movies = () => {
           return (
             movie.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
             movie.genre.toLowerCase().includes(searchTerm.toLowerCase())
-          ) && movie.createdAt && movie.createdAt.slice(0, 4) === selectedYear.toString();
+          ) && (!movie.createdAt || selectedYear === 'All' || movie.createdAt.slice(0, 4) === selectedYear.toString());
         }),
         sortBy
       )
     );
   }, [movies, searchTerm, sortBy, selectedYear]);
+  
   
   
 
