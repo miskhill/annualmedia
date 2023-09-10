@@ -5,8 +5,8 @@ const AnnualTotals = ({ arr, year, handleYearChange }) => {
 
   const annualTotals = (arr, year) => {
     let total = 0;
-    arr.forEach((item) => {
-      if (item.createdAt.slice(0, 4) === year.toString()) {
+    arr.forEach((movie) => {
+      if (movie.createdAt && movie.createdAt.slice(0, 4) === year.toString()) {
         total++;
       }
     });
