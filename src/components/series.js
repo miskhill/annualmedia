@@ -21,7 +21,6 @@ const Series = () => {
         .then((res) => {
           setSeries(res.data);
           setLoading(false);
-          console.log(res.data, "render data");
         });
     } catch (err) {
       console.log(err, "catch error");

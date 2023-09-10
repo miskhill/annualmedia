@@ -11,7 +11,7 @@ const Movies = () => {
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [sortBy, setSortBy] = useState("createdAt");
-  const [selectedYear, setSelectedYear] = useState(2023);
+  const [selectedYear, setSelectedYear] = useState('All');
 
 
   useEffect(() => {

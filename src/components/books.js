@@ -81,9 +81,8 @@ const Books = () => {
       />
       <div className='totals'>
         <h3>
-          {" "}
-          You have read <AnnualTotals arr={books} year={selectedYear} handleYearChange={setSelectedYear} />
- books this year
+          <AnnualTotals arr={books} year={selectedYear} handleYearChange={setSelectedYear} />
+          Total
         </h3>
       </div>
       {loading ? (
