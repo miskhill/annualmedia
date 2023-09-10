@@ -64,9 +64,11 @@ const Books = () => {
 
   useEffect(() => {
     const regexSearch = new RegExp(filters.searchTerm, "i");
-    const updatedSearchBooks = (sortedArray ? sortedArray : whichSort(books, sortBy)).filter((book) => {
-      return regexSearch.test(book.title) && book.createdAt && book.createdAt.slice(0, 4) === selectedYear.toString();
-    });
+    setSearchBooks(
+      (sortedArray ? sortedArray : whichSort(books, sortBy)).filter((book) => {
+        return regexSearch.test(book.title) && (selectedYear === 'All' || (book.createdAt && book.createdAt.slice(0, 4) === selectedYear.toString()));
+      })
+    );    
     console.log('Updated searchBooks:', updatedSearchBooks);
     setSearchBooks(updatedSearchBooks);
   }, [filters, sortBy, sortedArray, books, selectedYear]);   

@@ -4,7 +4,7 @@ const AnnualTotals = ({ arr, year, handleYearChange }) => {
   const [inputYear, setInputYear] = useState(year);
 
   const handleInputChange = (e) => {
-    setInputYear(e.target.value);
+    setInputYear(e.target.value === 'All' ? 'All' : parseInt(e.target.value));
   };
 
   const handleSubmit = (e) => {
@@ -15,7 +15,7 @@ const AnnualTotals = ({ arr, year, handleYearChange }) => {
   const annualTotals = (arr, year) => {
     let total = 0;
     arr.forEach((item) => {
-      if (item.createdAt.slice(0, 4) === year.toString()) {
+      if (year === 'All' || item.createdAt.slice(0, 4) === year.toString()) {
         total++;
       }
     });
@@ -25,12 +25,12 @@ const AnnualTotals = ({ arr, year, handleYearChange }) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <input type="number" value={inputYear} onChange={handleInputChange} />
+        <input type="text" value={inputYear} onChange={handleInputChange} />
         <button type="submit">Update Year</button>
       </form>
-      {annualTotals(arr, inputYear)}
+      {annualTotals(arr, year)}
     </div>
-  );  
+  ); 
 };
 
 export default AnnualTotals;
