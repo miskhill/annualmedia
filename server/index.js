@@ -25,11 +25,11 @@ const startServer = async () => {
     app.use(express.json());
     app.use(
       cors({
-        origin: "https://annualmedia.pages.dev",
-        origin: "http://localhost:3000",
+        origin: ["http://localhost:3000", "https://annualmedia.pages.dev"],
         methods: ["GET", "POST", "PUT", "DELETE"],
       })
     );
+
     app.use("/api", router);
 
     app.get("/", (_req, res) => {
