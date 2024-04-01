@@ -11,15 +11,18 @@ const Books = () => {
   const [sortBy, setSortBy] = useState("createdAt");
   const [sortedArray, setSortedArray] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [selectedYear, setSelectedYear] = useState('All');
-
+  const [selectedYear, setSelectedYear] = useState("All");
 
   useEffect(() => {
     setLoading(true);
     const getBooks = async () => {
       try {
         const { data } = await axios.get(
-          "https://annualmediaserver.onrender.com/api/books"
+          `${
+            process.env.NODE_ENV === "development"
+              ? "http://localhost:4000/api/books"
+              : "https://annualmediaserver.onrender.com/api/books"
+          }`
         );
         console.log(data, "render data");
         setBooks(Object.values({ ...data }));
@@ -63,10 +66,15 @@ const Books = () => {
     const regexSearch = new RegExp(filters.searchTerm, "i");
     setSearchBooks(
       (sortedArray ? sortedArray : whichSort(books, sortBy)).filter((book) => {
-        return regexSearch.test(book.title) && (selectedYear === 'All' || (book.createdAt && book.createdAt.slice(0, 4) === selectedYear.toString()));
+        return (
+          regexSearch.test(book.title) &&
+          (selectedYear === "All" ||
+            (book.createdAt &&
+              book.createdAt.slice(0, 4) === selectedYear.toString()))
+        );
       })
-    );    
-  }, [filters, sortBy, sortedArray, books, selectedYear]);    
+    );
+  }, [filters, sortBy, sortedArray, books, selectedYear]);
 
   return (
     <>
@@ -78,7 +86,11 @@ const Books = () => {
       />
       <div className='totals'>
         <h3>
-          <AnnualTotals arr={books} year={selectedYear} handleYearChange={setSelectedYear} />
+          <AnnualTotals
+            arr={books}
+            year={selectedYear}
+            handleYearChange={setSelectedYear}
+          />
         </h3>
       </div>
       {loading ? (
@@ -93,7 +105,13 @@ const Books = () => {
           <img src='loading.gif' alt='Loading' />
         </div>
       ) : (
-        <BookGrid books={(filters.searchTerm !== "" || selectedYear !== 'All') ? searchBooks : sortedArray} />
+        <BookGrid
+          books={
+            filters.searchTerm !== "" || selectedYear !== "All"
+              ? searchBooks
+              : sortedArray
+          }
+        />
       )}
     </>
   );

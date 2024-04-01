@@ -23,9 +23,14 @@ const MovieUploadCard = () => {
     formState: { errors },
   } = useForm();
 
+  const apiUrl =
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:4000/api"
+      : "https://annualmediaserver.onrender.com/api";
+
   const onSubmit = (movie) => {
     axios
-      .post("https://annualmediaserver.onrender.com/api/movies", movie)
+      .post(`${apiUrl}/movies`, movie)
       .then((res) => {
         console.log(res.data);
         if (res.status === 201) {
@@ -43,20 +48,14 @@ const MovieUploadCard = () => {
       <form onSubmit={handleSubmit(onSubmit)} style={mystyle}>
         {/* register your input into the hook by invoking the "register" function */}
         {/* include validation with required or other standard HTML validation rules */}
-        <input
-          placeholder='Title'
-          {...register("title", { required: true })}
-        />
+        <input placeholder='Title' {...register("title", { required: true })} />
         {/* errors will return when field validation fails  */}
         {errors.title && <span>The title is required</span>}
 
         <input placeholder='Year' {...register("year", { required: true })} />
         {errors.year && <span>The year is required</span>}
 
-        <input
-          placeholder='Genre'
-          {...register("genre", { required: true })}
-        />
+        <input placeholder='Genre' {...register("genre", { required: true })} />
         {errors.genre && <span>The genre is required</span>}
 
         <input
@@ -80,10 +79,10 @@ const MovieUploadCard = () => {
         <input placeholder='Plot' {...register("plot", { required: true })} />
         {errors.plot && <span>The plot is required</span>}
 
-        <input placeholder='Rating' {...register('rating')} />
+        <input placeholder='Rating' {...register("rating")} />
         {errors.rating && <span>The rating is required</span>}
 
-        <input className="submit-button" type="submit" value="Submit" />
+        <input className='submit-button' type='submit' value='Submit' />
       </form>
     </>
   );

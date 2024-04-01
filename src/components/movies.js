@@ -11,14 +11,19 @@ const Movies = () => {
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [sortBy, setSortBy] = useState("createdAt");
-  const [selectedYear, setSelectedYear] = useState('All');
-
+  const [selectedYear, setSelectedYear] = useState("All");
 
   useEffect(() => {
     setLoading(true);
     try {
       axios
-        .get("https://annualmediaserver.onrender.com/api/movies")
+        .get(
+          `${
+            process.env.NODE_ENV === "development"
+              ? "http://localhost:4000/api/movies"
+              : "https://annualmediaserver.onrender.com/api/movies"
+          }`
+        )
         .then((res) => {
           setMovies(res.data);
           setLoading(false);
@@ -38,11 +43,7 @@ const Movies = () => {
   };
 
   const whichSort = (array, sortBy) => {
-    if (
-      sortBy === "genre" ||
-      sortBy === "title" ||
-      sortBy === "createdAt"
-    ) {
+    if (sortBy === "genre" || sortBy === "title" || sortBy === "createdAt") {
       return array.sort((a, b) => (a[sortBy] < b[sortBy] ? 1 : -1));
     } else {
       return array.sort((a, b) => (a[sortBy] > b[sortBy] ? 1 : -1));
@@ -54,17 +55,17 @@ const Movies = () => {
       whichSort(
         movies.filter((movie) => {
           return (
-            movie.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            movie.genre.toLowerCase().includes(searchTerm.toLowerCase())
-          ) && (!movie.createdAt || selectedYear === 'All' || movie.createdAt.slice(0, 4) === selectedYear.toString());
+            (movie.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+              movie.genre.toLowerCase().includes(searchTerm.toLowerCase())) &&
+            (!movie.createdAt ||
+              selectedYear === "All" ||
+              movie.createdAt.slice(0, 4) === selectedYear.toString())
+          );
         }),
         sortBy
       )
     );
   }, [movies, searchTerm, sortBy, selectedYear]);
-  
-  
-  
 
   return (
     <>
@@ -85,7 +86,11 @@ const Movies = () => {
         className='totals'
       >
         <h3 style={{ fontSize: "20px", fontWeight: "bold", margin: "0" }}>
-          <AnnualTotals arr={movies} year={selectedYear} handleYearChange={setSelectedYear} />
+          <AnnualTotals
+            arr={movies}
+            year={selectedYear}
+            handleYearChange={setSelectedYear}
+          />
         </h3>
       </div>
 

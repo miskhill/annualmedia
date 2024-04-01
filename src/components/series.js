@@ -17,7 +17,7 @@ const Series = () => {
     setLoading(true);
     try {
       axios
-        .get("https://annualmediaserver.onrender.com/api/series")
+        .get(`${process.env.NODE_ENV === 'development' ? 'http://localhost:4000/api/series' : 'https://annualmediaserver.onrender.com/api/series'}`)
         .then((res) => {
           setSeries(res.data);
           setLoading(false);
@@ -26,6 +26,7 @@ const Series = () => {
       console.log(err, "catch error");
     }
   }, []);
+  
 
   const handleFilterChange = (event) => {
     setSearchTerm(event.target.value);
