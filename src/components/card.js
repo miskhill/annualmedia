@@ -63,13 +63,12 @@ const MediaCard = ({ title, year, genre, rating, image, plot }) => {
   };
 
   return (
-    <StyledCard sx={{ maxWidth: 345, margin: "10px" }}>
+    <StyledCard sx={{ maxWidth: 345, margin: "10px", padding: "25px" }}>
       {imageError ? (
         <div
           className='shimmer-wrapper'
           style={{ width: "100%", height: "500px" }}
-        >
-        </div>
+        ></div>
       ) : (
         <StyledImage
           component='img'
