@@ -1,6 +1,8 @@
 import movies from '../models/movie.js';
 
 export const getAllMovies = async (req, res) => {
+  // const limit = Number(req.query.limit);
+  // const offset = Number(req.query.offset);
   try {
     const findMovies = await movies.find();
     res.status(200).json(findMovies);

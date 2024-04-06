@@ -88,7 +88,7 @@ const Series = () => {
       ) : (
         <Grid container spacing={2}>
           {filteredSeries.map((serie) => (
-            <Grid item xs={12} sm={6} md={4} lg={3}>
+            <Grid item xs={12} sm={6} md={4} lg={3} key={serie._id}>
               <MediaCard
                 key={serie.id}
                 title={serie.title}
