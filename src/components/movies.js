@@ -106,7 +106,7 @@ const Movies = () => {
           <img src='loading.gif' alt='Loading' />
         </div>
       ) : (
-        <Grid container spacing={3}>
+        <Grid container spacing={2}>
           {filteredMovies.map((movie) => (
             <Grid item xs={12} sm={6} md={4} lg={3} key={movie._id}>
               <MediaCard
