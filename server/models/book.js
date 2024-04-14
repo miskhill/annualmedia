@@ -40,6 +40,12 @@ const BookSchema = new mongoose.Schema({
     index: true,
     maxlength: 100,
   },
+  plot: {
+    type: String,
+    required: [true, "can't be blank"],
+    index: true,
+    maxlength: 2000,
+  },
   rating: {
     // rating to be between 0 and 5
     type: Number,
