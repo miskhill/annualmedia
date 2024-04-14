@@ -59,6 +59,8 @@ const BookUploadCard = () => {
         <input placeholder='Poster' {...register("poster")} />
         {errors.poster && <span>The poster is required</span>}
         <input placeholder='Rating' {...register("rating")} />
+        {errors.rating && <span>The plot is required</span>}
+        <input placeholder='Plot' {...register("plot", { required: true })} />
         {errors.rating && <span>The rating is required</span>}
         <input className='submit-button' type='submit' value='Submit' />{" "}
       </form>
