@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -16,10 +16,12 @@ const MovieUploadCard = () => {
   };
 
   const navigate = useNavigate();
+  const [searchResults, setSearchResults] = useState([]);
 
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm();
 
@@ -42,12 +44,69 @@ const MovieUploadCard = () => {
       });
   };
 
+  const handleSearch = async (event) => {
+    const searchTerm = event.target.value;
+
+    if (searchTerm.length > 2) {
+      const response = await axios.get(
+        `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&query=${searchTerm}`
+      );
+      setSearchResults(response.data.results);
+    }
+  };
+
+  const handleSelectMovie = async (movieId) => {
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+    );
+    const movie = response.data;
+    console.log(movie);
+    //const director = movie.credits.crew.find((person) => person.job === "Director").name;
+    const poster = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+    // const actors = movie.credits.cast.slice(0, 3).map((actor) => actor.name).join(", ");
+    const plot = movie.overview;
+    const rating = movie.vote_average.toString();
+  
+    //console.log('Director:', director);
+    console.log('Poster:', poster);
+    //console.log('Actors:', actors);
+    console.log('Plot:', plot);
+    console.log('Rating:', rating);
+
+    // Autofill the form fields
+    setValue("title", movie.title);
+    setValue("year", movie.release_date.split("-")[0]);
+    setValue("genre", movie.genres.map((genre) => genre.name).join(", "));
+    setValue("poster", `https://image.tmdb.org/t/p/w500${movie.poster_path}`);
+    setValue("plot", movie.overview);
+    setValue("rating", movie.vote_average.toString());
+  };
+
   return (
     <>
       <h1>Movie Upload</h1>
       <form onSubmit={handleSubmit(onSubmit)} style={mystyle}>
         {/* register your input into the hook by invoking the "register" function */}
         {/* include validation with required or other standard HTML validation rules */}
+        <input placeholder='Search Movie' onChange={handleSearch} />
+    {searchResults.map((movie) => (
+  <div 
+    key={movie.id} 
+    onClick={() => handleSelectMovie(movie.id)}
+    style={{
+      cursor: 'pointer',
+      backgroundColor: '#f8f9fa',
+      padding: '10px',
+      border: '1px solid #ddd',
+      borderRadius: '4px',
+      marginBottom: '5px',
+      fontSize: '0.8rem',
+      color: '#333',
+    }}
+  >
+    {movie.title}
+  </div>
+))}
         <input placeholder='Title' {...register("title", { required: true })} />
         {/* errors will return when field validation fails  */}
         {errors.title && <span>The title is required</span>}
