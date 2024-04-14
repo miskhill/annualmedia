@@ -3,6 +3,12 @@ import movies from "../models/movie.js";
 export const getAllMovies = async (req, res) => {
   // const limit = Number(req.query.limit);
   // const offset = Number(req.query.offset);
+  console.log(
+    `TMDB API Key (first 5 characters): ${process.env.REACT_APP_TMDB_API_KEY?.substring(
+      0,
+      5
+    )}`
+  );
   try {
     const findMovies = await movies.find();
     res.status(200).json(findMovies);
