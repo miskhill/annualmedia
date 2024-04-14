@@ -48,6 +48,7 @@ const MovieUploadCard = () => {
     const searchTerm = event.target.value;
     console.log(`Environment: ${process.env.NODE_ENV}`);
     console.log(`LOL Variable: ${process.env.REACT_APP_LOL}`);
+    console.log(process.env, "process.env")
     console.log(
       `TMDB API Key (first 5 characters): ${process.env.REACT_APP_TMDB_API_KEY?.substring(
         0,
