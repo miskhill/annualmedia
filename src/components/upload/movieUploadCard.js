@@ -46,6 +46,13 @@ const MovieUploadCard = () => {
 
   const handleSearch = async (event) => {
     const searchTerm = event.target.value;
+    console.log(`Environment: ${process.env.NODE_ENV}`);
+    console.log(
+      `TMDB API Key (first 5 characters): ${process.env.REACT_APP_TMDB_API_KEY?.substring(
+        0,
+        5
+      )}`
+    );
 
     if (searchTerm.length > 2) {
       const response = await axios.get(
@@ -66,12 +73,12 @@ const MovieUploadCard = () => {
     // const actors = movie.credits.cast.slice(0, 3).map((actor) => actor.name).join(", ");
     const plot = movie.overview;
     const rating = movie.vote_average.toString();
-  
+
     //console.log('Director:', director);
-    console.log('Poster:', poster);
+    console.log("Poster:", poster);
     //console.log('Actors:', actors);
-    console.log('Plot:', plot);
-    console.log('Rating:', rating);
+    console.log("Plot:", plot);
+    console.log("Rating:", rating);
 
     // Autofill the form fields
     setValue("title", movie.title);
@@ -89,24 +96,24 @@ const MovieUploadCard = () => {
         {/* register your input into the hook by invoking the "register" function */}
         {/* include validation with required or other standard HTML validation rules */}
         <input placeholder='Search Movie' onChange={handleSearch} />
-    {searchResults.map((movie) => (
-  <div 
-    key={movie.id} 
-    onClick={() => handleSelectMovie(movie.id)}
-    style={{
-      cursor: 'pointer',
-      backgroundColor: '#f8f9fa',
-      padding: '10px',
-      border: '1px solid #ddd',
-      borderRadius: '4px',
-      marginBottom: '5px',
-      fontSize: '0.8rem',
-      color: '#333',
-    }}
-  >
-    {movie.title}
-  </div>
-))}
+        {searchResults.map((movie) => (
+          <div
+            key={movie.id}
+            onClick={() => handleSelectMovie(movie.id)}
+            style={{
+              cursor: "pointer",
+              backgroundColor: "#f8f9fa",
+              padding: "10px",
+              border: "1px solid #ddd",
+              borderRadius: "4px",
+              marginBottom: "5px",
+              fontSize: "0.8rem",
+              color: "#333",
+            }}
+          >
+            {movie.title}
+          </div>
+        ))}
         <input placeholder='Title' {...register("title", { required: true })} />
         {/* errors will return when field validation fails  */}
         {errors.title && <span>The title is required</span>}
