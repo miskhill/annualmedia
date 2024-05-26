@@ -1,9 +1,9 @@
-import React from 'react';
-import ImportCard from './importCard';
+import React from "react";
+import ImportCard from "./importCard.js";
 
 function Home() {
   return (
-    <div className="home-background">
+    <div className='home-background'>
       <ImportCard />
     </div>
   );

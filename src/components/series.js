@@ -3,7 +3,7 @@ import MediaCard from "./card.js";
 import axios from "axios";
 import AnnualTotals from "./utils/annualTotals.js";
 import Filters from "./utils/filters.js";
-import Grid from "@mui/material/Grid";
+import { Grid } from "@mui/material";
 
 const Series = () => {
   const [series, setSeries] = useState([]);

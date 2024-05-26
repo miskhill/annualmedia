@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import BookUploadCard from "./upload/bookUploadCard";
-import MovieUploadCard from "./upload/movieUploadCard";
-import SeriesUploadCard from "./upload/seriesUploadCard";
-import TabNavItem from './tabNavItem';
-import TabContent from './tabContent';
+import BookUploadCard from "./upload/bookUploadCard.js";
+import MovieUploadCard from "./upload/movieUploadCard.js";
+import SeriesUploadCard from "./upload/seriesUploadCard.js";
+import TabNavItem from './tabNavItem.js';
+import TabContent from './tabContent.js';
 
 const ImportCard = () => {
   const [activeTab, setActiveTab] = useState("movie");
