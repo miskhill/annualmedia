@@ -50,7 +50,7 @@ const MovieUploadCard = () => {
     console.log(`LOL Variable: ${process.env.REACT_APP_LOL}`);
     console.log(process.env, "process.env")
     console.log(
-      `TMDB API Key (first 5 characters): ${process.env.REACT_APP_TMDB_API_KEY?.substring(
+      `TMDB API Key FRONTEND (first 5 characters): ${process.env.REACT_APP_TMDB_API_KEY?.substring(
         0,
         5
       )}`

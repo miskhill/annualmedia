@@ -4,7 +4,7 @@ export const getAllMovies = async (req, res) => {
   // const limit = Number(req.query.limit);
   // const offset = Number(req.query.offset);
   console.log(
-    `TMDB API Key (first 5 characters): ${process.env.REACT_APP_TMDB_API_KEY?.substring(
+    `TMDB API Key Backend(first 5 characters): ${process.env.REACT_APP_TMDB_API_KEY?.substring(
       0,
       5
     )}`
