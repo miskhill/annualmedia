@@ -25,7 +25,11 @@ const startServer = async () => {
     app.use(express.json());
     app.use(
       cors({
-        origin: ["http://localhost:3000", "https://annualmedia.pages.dev", "https://annual-media-front-end.vercel.app/"],
+        origin: [
+          "http://localhost:3000",
+          "https://annualmedia.pages.dev",
+          "https://annual-media-front-end.vercel.app",
+        ],
         methods: ["GET", "POST", "PUT", "DELETE"],
       })
     );
