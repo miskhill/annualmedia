@@ -21,7 +21,6 @@ const SeriesSchema = new mongoose.Schema({
   },
   director: {
     type: String,
-    required: [true, "can't be blank"],
     index: true,
     maxlength: 100,
   },
