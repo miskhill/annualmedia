@@ -7,7 +7,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "npx nodemon index.js",
-    "seed": "node database/seeds.js"
+    "seed": "node database/seeds.js",
+    "list-users": "node tools/listUsers.js",
+    "update-password": "node tools/updateUserPassword.js"
   },
   "author": "GS",
   "license": "ISC",

@@ -1,14 +1,28 @@
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-import  User  from '../models/user.js';
-import userD from './data/userD.js';
-import  Movie  from '../models/movie.js'; 
+import User from '../models/user.js';
+import Movie from '../models/movie.js'; 
 import movieD from './data/movieD.js';
-import Series  from '../models/series.js';
+import Series from '../models/series.js';
 import seriesD from './data/seriesD.js';
-import Book  from '../models/book.js';
+import Book from '../models/book.js';
 import bookD from './data/bookD.js';
 dotenv.config();
+
+const buildUserSeeds = () => {
+  const { ADMIN_EMAIL, ADMIN_PASSWORD, ADMIN_ROLE = 'admin' } = process.env;
+
+  if (!ADMIN_EMAIL || !ADMIN_PASSWORD) {
+    console.log('Skipping admin user seed – set ADMIN_EMAIL and ADMIN_PASSWORD to seed a user.');
+    return [];
+  }
+
+  return [{
+    email: ADMIN_EMAIL.trim().toLowerCase(),
+    password: ADMIN_PASSWORD,
+    role: ADMIN_ROLE,
+  }];
+};
 
 const seedDB = async () => {
   try {
@@ -22,7 +36,11 @@ const seedDB = async () => {
     await Book.deleteMany({});
     console.log('Data deleted 🗑');
 
-    await User.create(userD);
+    const userSeeds = buildUserSeeds();
+    if (userSeeds.length) {
+      await User.create(userSeeds);
+      console.log('Admin user seeded 👤');
+    }
     await Movie.create(movieD);
     await Series.create(seriesD);
     await Book.create(bookD);
