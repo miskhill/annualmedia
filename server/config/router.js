@@ -14,6 +14,7 @@ import {
   getSeriesById,
   createSeries,
 } from "../controllers/seriesController.js";
+import { login } from "../controllers/authController.js";
 // import { secureRoute } from './secureRoute.js';
 
 //TO DO - add secureRoute to all create routes
@@ -32,5 +33,7 @@ router.post("/books", createBook);
 router.get("/series", getAllSeries);
 router.get("/series/:id", getSeriesById);
 router.post("/series", createSeries);
+
+router.post("/auth/login", login);
 
 export default router;
