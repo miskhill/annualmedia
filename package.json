@@ -8,7 +8,6 @@
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@mui/material": "^5.15.15",
-    "@mui/styled-engine-sc": "^6.0.0-alpha.18",
     "@mui/system": "^5.15.15",
     "@shoelace-style/shoelace": "^2.0.0",
     "@testing-library/jest-dom": "^5.16.5",
@@ -26,8 +25,7 @@
     "react-hook-form": "^7.42.0",
     "react-router-dom": "^6.6.1",
     "react-scripts": "^5.0.1",
-    "sonner": "^0.3.0",
-    "styled-components": "^5.3.11"
+    "sonner": "^0.3.0"
   },
   "proxy": "https://annualmediaserver.onrender.com",
   "scripts": {
