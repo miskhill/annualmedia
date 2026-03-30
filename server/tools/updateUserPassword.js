@@ -1,6 +1,5 @@
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-import bcrypt from 'bcrypt';
 import User from '../models/user.js';
 
 dotenv.config();
@@ -31,7 +30,7 @@ const main = async () => {
       return;
     }
 
-    user.password = await bcrypt.hash(passwordArg, 10);
+    user.password = passwordArg;
     await user.save();
     console.log(`Password updated for ${user.email}`);
   } catch (err) {
